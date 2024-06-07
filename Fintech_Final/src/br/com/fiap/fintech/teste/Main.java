@@ -1,4 +1,5 @@
-package br.com.fiap.fintech.dao;
+package br.com.fiap.fintech.teste;
+
 
 import java.util.List;
 
@@ -8,6 +9,12 @@ import br.com.fiap.fintech.bean.Login;
 import br.com.fiap.fintech.bean.Perfil;
 import br.com.fiap.fintech.bean.Telefone;
 import br.com.fiap.fintech.bean.Transacao;
+import br.com.fiap.fintech.dao.CategoriaDAO;
+import br.com.fiap.fintech.dao.InvestimentoDAO;
+import br.com.fiap.fintech.dao.LoginDAO;
+import br.com.fiap.fintech.dao.PerfilDAO;
+import br.com.fiap.fintech.dao.TelefoneDAO;
+import br.com.fiap.fintech.dao.TransacaoDAO;
 
 import java.time.LocalDate;
 
