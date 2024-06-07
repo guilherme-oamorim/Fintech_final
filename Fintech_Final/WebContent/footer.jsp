@@ -7,7 +7,8 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
+		<h1>Olá mundo!</h1>
+		<h2>Problema</h2>
 		<script type="text/javascript" src="resources/js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 	</body>
 </html>
