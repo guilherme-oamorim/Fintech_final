@@ -1,4 +1,4 @@
-package br.com.fiap.fintech.dao;
+package br.com.fiap.fintech.dao.impl;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.fintech.bean.Login;
-import br.com.fiap.fintech.singleton.FintechDbManager;
+import br.com.fiap.fintech.singleton.ConnectionManager;
 
-public class LoginDAO {
+public class OracleLoginDAO {
 
 	private Connection conexao;
 
@@ -20,7 +20,7 @@ public class LoginDAO {
 		PreparedStatement stmt = null;
 
 		try {
-			conexao = FintechDbManager.obterConexao();
+			conexao = ConnectionManager.getConnection();
 			String sql = "INSERT INTO t_ftc_login (id_login, nm_login, ds_email, ds_senha, dt_criacao)"
 					+ " VALUES (SQ_LOGIN.NEXTVAL,?,?,?,?)";
 			stmt = conexao.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class LoginDAO {
 		ResultSet rs = null;
 
 		try {
-			conexao = FintechDbManager.obterConexao();
+			conexao = ConnectionManager.getConnection();
 			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_LOGIN ORDER BY ID_LOGIN ASC");
 			rs = stmt.executeQuery();
 

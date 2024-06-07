@@ -1,4 +1,4 @@
-package br.com.fiap.fintech.dao;
+package br.com.fiap.fintech.dao.impl;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.fintech.bean.Categoria;
-import br.com.fiap.fintech.singleton.FintechDbManager;
+import br.com.fiap.fintech.singleton.ConnectionManager;
 
-public class CategoriaDAO {
+public class OracleCategoriaDAO {
 
 	private Connection conexao;
 
@@ -21,7 +21,7 @@ public class CategoriaDAO {
 
 		try {
 
-			conexao = FintechDbManager.obterConexao();
+			conexao = ConnectionManager.getConnection();
 
 			String sql = "INSERT INTO t_ftc_categoria (id_categoria, nm_categoria, dt_criacao, ds_categoria)"
 					+ "VALUES (SQ_CATEGORIA.NEXTVAL,?,?,?)";
@@ -49,7 +49,7 @@ public class CategoriaDAO {
 		ResultSet rs = null;
 
 		try {
-			conexao = FintechDbManager.obterConexao();
+			conexao = ConnectionManager.getConnection();
 
 			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_CATEGORIA ORDER BY ID_CATEGORIA ASC");
 			rs = stmt.executeQuery();

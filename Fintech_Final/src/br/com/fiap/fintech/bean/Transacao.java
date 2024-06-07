@@ -3,6 +3,7 @@ package br.com.fiap.fintech.bean;
 import java.time.LocalDate;
 
 public class Transacao {
+	
 	private int id_transacao;
 	private int id_perfil;
 	private int id_categoria;
