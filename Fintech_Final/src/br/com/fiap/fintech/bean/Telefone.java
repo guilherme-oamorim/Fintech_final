@@ -1,4 +1,4 @@
-package br.com.fiap.fintech;
+package br.com.fiap.fintech.bean;
 
 public class Telefone {
 	private int id_telefone;

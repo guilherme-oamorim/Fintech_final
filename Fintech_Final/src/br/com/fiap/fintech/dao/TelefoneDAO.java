@@ -1,4 +1,4 @@
-package br.com.fiap.fintech;
+package br.com.fiap.fintech.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.fiap.fintech.bean.Telefone;
+import br.com.fiap.fintech.singleton.FintechDbManager;
 
 public class TelefoneDAO {
 

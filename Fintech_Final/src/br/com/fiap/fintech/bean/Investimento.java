@@ -1,4 +1,4 @@
-package br.com.fiap.fintech;
+package br.com.fiap.fintech.bean;
 
 import java.time.LocalDate;
 

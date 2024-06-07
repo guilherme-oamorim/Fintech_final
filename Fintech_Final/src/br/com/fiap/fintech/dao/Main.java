@@ -1,6 +1,14 @@
-package br.com.fiap.fintech;
+package br.com.fiap.fintech.dao;
 
 import java.util.List;
+
+import br.com.fiap.fintech.bean.Categoria;
+import br.com.fiap.fintech.bean.Investimento;
+import br.com.fiap.fintech.bean.Login;
+import br.com.fiap.fintech.bean.Perfil;
+import br.com.fiap.fintech.bean.Telefone;
+import br.com.fiap.fintech.bean.Transacao;
+
 import java.time.LocalDate;
 
 public class Main {
