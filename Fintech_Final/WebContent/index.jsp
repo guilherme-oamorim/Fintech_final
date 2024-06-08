@@ -9,11 +9,7 @@
 	<%@include file="styles.jsp" %>
 </head>
 <body>
-	<%@include file="nav.jsp" %>
-	<h1>Teste</h1>
-	
-	
-	
+	<%@include file="nav.jsp"%>
 
 <div class="container">
 	<h1>Cadastro</h1>
@@ -44,12 +40,6 @@
 		<input type="submit" value="Salvar" class="btn btn-primary">
 	</form>
 </div>
-
-	
-	
-	
-	
-	
 	
 	<%@include file="footer.jsp" %>
 </body>

@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 			Login login = new Login(0, nome, email, senha, saldo, dt_criacao); 
 			dao.Cadastrar(login);
 			
-			request.setAttribute("msg", "Produto cadastrado!");
+			request.setAttribute("msg", "Usuário cadastrado!");
 		}catch(Exception e){
 			e.printStackTrace();
 			request.setAttribute("erro","Por favor, valide os dados");
