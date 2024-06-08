@@ -35,11 +35,11 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			String sql = "INSERT INTO t_ftc_transacao (id_transacao, id_perfil, id_categoria, dt_transacao, vl_transacao, ds_transacao) "
+			String sql = "INSERT INTO t_ftc_transacao (id_transacao, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao) "
 					+ "VALUES (SQ_TRANSACAO.NEXTVAL, ?, ?, ?, ?, ?)";
 
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, transacao.getId_perfil());
+			stmt.setInt(1, transacao.getId_login());
 			stmt.setInt(2, transacao.getId_categoria());
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(3, data);
@@ -84,7 +84,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 		try {
 			
 			conexao = ConnectionManager.getInstance().getConnection();
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_perfil = ? "
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ? "
 					+ "ORDER BY ID_TRANSACAO ASC");
 			stmt.setInt(1, 1);
 			rs = stmt.executeQuery();
@@ -92,7 +92,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			while (rs.next()) {
 				Transacao transacao = new Transacao();
 				transacao.setId_transacao(rs.getInt("id_transacao"));
-				transacao.setId_perfil(rs.getInt("id_perfil"));
+				transacao.setId_login(rs.getInt("id_login"));
 				transacao.setId_categoria(rs.getInt("id_categoria"));
 				Date data = rs.getDate("dt_transacao");
 				transacao.setDt_transacao(data.toLocalDate());

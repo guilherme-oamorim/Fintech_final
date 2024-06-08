@@ -21,14 +21,15 @@ public class OracleLoginDAO {
 
 		try {
 			conexao = ConnectionManager.getConnection();
-			String sql = "INSERT INTO t_ftc_login (id_login, nm_login, ds_email, ds_senha, dt_criacao)"
-					+ " VALUES (SQ_LOGIN.NEXTVAL,?,?,?,?)";
+			String sql = "INSERT INTO t_ftc_login (id_login, nm_login, ds_email, ds_senha, vl_saldo, dt_criacao)"
+					+ " VALUES (SQ_LOGIN.NEXTVAL,?,?,?,?,?)";
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, login.getNm_login());
 			stmt.setString(2, login.getDs_email());
 			stmt.setString(3, login.getDs_senha());
+			stmt.setFloat(4, login.getVl_saldo());
 			Date data = Date.valueOf(login.getDt_criacao());
-			stmt.setDate(4, data);
+			stmt.setDate(5, data);
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -57,6 +58,7 @@ public class OracleLoginDAO {
 				login.setNm_login(rs.getString("NM_LOGIN"));
 				login.setDs_email(rs.getString("DS_EMAIL"));
 				login.setDs_senha(rs.getString("DS_SENHA"));
+				login.setVl_saldo(rs.getFloat("VL_SALDO"));
 				Date data = rs.getDate("dt_criacao");
 				login.setDt_criacao(data.toLocalDate());
 

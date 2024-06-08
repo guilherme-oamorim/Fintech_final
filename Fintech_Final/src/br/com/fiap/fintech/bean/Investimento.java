@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Investimento {
 
 	private int id_invest;
-	private int id_perfil;
+	private int id_login;
 	private String nm_invest;
 	private float vl_invest;
 	private LocalDate dt_invest;
@@ -15,11 +15,11 @@ public class Investimento {
 	public Investimento() {
 	}
 
-	public Investimento(int id_invest, int id_perfil, String nm_invest, float vl_invest, LocalDate dt_invest,
+	public Investimento(int id_invest, int id_login, String nm_invest, float vl_invest, LocalDate dt_invest,
 			String ds_invest, LocalDate dt_conclusao) {
 		super();
 		this.id_invest = id_invest;
-		this.id_perfil = id_perfil;
+		this.id_login = id_login;
 		this.nm_invest = nm_invest;
 		this.vl_invest = vl_invest;
 		this.dt_invest = dt_invest;
@@ -35,12 +35,12 @@ public class Investimento {
 		this.id_invest = id_invest;
 	}
 
-	public int getId_perfil() {
-		return id_perfil;
+	public int getId_login() {
+		return id_login;
 	}
 
-	public void setId_perfil(int id_perfil) {
-		this.id_perfil = id_perfil;
+	public void setId_login(int id_login) {
+		this.id_login = id_login;
 	}
 
 	public String getNm_invest() {
