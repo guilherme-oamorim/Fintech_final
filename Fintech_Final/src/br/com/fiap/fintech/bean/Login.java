@@ -7,13 +7,13 @@ public class Login {
 	private String nm_login;
 	private String ds_email;
 	private String ds_senha;
-	private float vl_saldo;
+	private double vl_saldo;
 	private LocalDate dt_criacao;
 
 	public Login() {
 	}
 
-	public Login(int id_login, String nm_login, String ds_email, String ds_senha, float vl_saldo, LocalDate dt_criacao) {
+	public Login(int id_login, String nm_login, String ds_email, String ds_senha, double vl_saldo, LocalDate dt_criacao) {
 		this.id_login = id_login;
 		this.nm_login = nm_login;
 		this.ds_email = ds_email;
@@ -30,11 +30,11 @@ public class Login {
 		this.id_login = id_login;
 	}
 	
-	public float getVl_saldo() {
+	public double getVl_saldo() {
 		return vl_saldo;
 	}
 
-	public void setVl_saldo(float vl_saldo) {
+	public void setVl_saldo(double vl_saldo) {
 		this.vl_saldo = vl_saldo;
 	}
 
