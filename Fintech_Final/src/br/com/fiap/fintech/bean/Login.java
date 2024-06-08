@@ -13,7 +13,7 @@ public class Login {
 	public Login() {
 	}
 
-	public Login(int id_login, String nm_login, String ds_email, String ds_senha, int vl_saldo, LocalDate dt_criacao) {
+	public Login(int id_login, String nm_login, String ds_email, String ds_senha, float vl_saldo, LocalDate dt_criacao) {
 		this.id_login = id_login;
 		this.nm_login = nm_login;
 		this.ds_email = ds_email;
