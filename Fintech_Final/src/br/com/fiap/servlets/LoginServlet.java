@@ -24,7 +24,7 @@ import br.com.fiap.fintech.exception.DBException;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private OracleLoginDAO dao;
+	private OracleLoginDAO dao = new OracleLoginDAO();
     /**
      * Default constructor. 
      */
@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 			String nome = request.getParameter("nome");
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
-			float saldo = Float.parseFloat(request.getParameter("saldo"));
+			double saldo = Double.parseDouble(request.getParameter("saldo"));
 			LocalDate dt_criacao = LocalDate.now();
 			
 			Login login = new Login(0, nome, email, senha, saldo, dt_criacao); 
@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("erro","Por favor, valide os dados");
 		}
-		request.getRequestDispatcher("cadastro-produto.jsp").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 }
 

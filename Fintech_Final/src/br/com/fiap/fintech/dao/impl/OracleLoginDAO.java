@@ -27,7 +27,7 @@ public class OracleLoginDAO {
 			stmt.setString(1, login.getNm_login());
 			stmt.setString(2, login.getDs_email());
 			stmt.setString(3, login.getDs_senha());
-			stmt.setFloat(4, login.getVl_saldo());
+			stmt.setDouble(4, login.getVl_saldo());
 			Date data = Date.valueOf(login.getDt_criacao());
 			stmt.setDate(5, data);
 
