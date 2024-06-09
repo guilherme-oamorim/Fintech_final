@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Fintech</title>
 	<%@include file="styles.jsp" %>
 </head>
 <body>
@@ -74,45 +74,9 @@
     <div id="portfolio">
         <div class="container-fluid p-0">
             <div class="row g-0">
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="resources/assets/img/portfolio/fullsize/familia-fofa-brincando-em-um-campo-de-verao.jpg"
-                        title="Todos podem contribuir e acompanhar os gastos de forma fácil">
-                        <img class="img-fluid"
-                            src="resources/assets/img/portfolio/thumbnails/familia-fofa-brincando-em-um-campo-de-verao.jpg"
-                            alt="..." />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Integração familiar</div>
-                            <div class="project-name">Todos podem contribuir e acompanhar os gastos de forma fácil</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="resources/assets/img/portfolio/fullsize/feliz-jovem-africano-sentado-coworking.jpg"
-                        title="Tudo num lugar só">
-                        <img class="img-fluid"
-                            src="resources/assets/img/portfolio/thumbnails/feliz-jovem-africano-sentado-coworking.jpg"
-                            alt="..." />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Gerenciamento de investimentos</div>
-                            <div class="project-name">Tudo num lugar só</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box"
-                        href="resources/assets/img/portfolio/fullsize/happy-couple-analyzing-their-home-budget-while-paying-bill-computer.jpg"
-                        title="Uma leitura clara da evolução do seu portfólio.">
-                        <img class="img-fluid"
-                            src="resources/assets/img/portfolio/thumbnails/happy-couple-analyzing-their-home-budget-while-paying-bill-computer.jpg"
-                            alt="..." />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Histórico de despesas</div>
-                            <div class="project-name">Uma leitura clara da evolução do seu portfólio</div>
-                        </div>
-                    </a>
-                </div>
+                <%@include file="index/image1.jsp" %>
+                <%@include file="index/image2.jsp" %>
+                <%@include file="index/image3.jsp" %>
             </div>
         </div>
     </div>
@@ -126,49 +90,16 @@
                     <p class="text-muted mb-5">Coloque aqui seu nome e seu e-mail, que logo chegará uma mensagem na sua caixa sobre as etapas finais do cadastro.</p>
                 </div>
             </div>
-            <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center mb-4">
                 <div class="col-lg-6">
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                        <!-- Nome-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="text" placeholder="Coloque seu nome..."
-                                data-sb-validations="required" />
-                            <label for="name">Nome Completo</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">O nome é obrigatório.</div>
-                        </div>
-                        <!-- E-mail-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="nome@exemplo.com"
-                                data-sb-validations="required,email" />
-                            <label for="email">E-mail</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">O e-mail é obrigatório.
-                            </div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">E-mail inválido.</div>
-                        </div>
-                        <!-- Mensagem de sucesso no cadastro-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Cadastro bem sucedido!</div>
-                                Enviamos uma mensagem no seu e-mail com mais informações. 
-                                <br />
-                                <a
-                                    href="">Reenviar e-mail</a>
-                            </div>
-                        </div>
-                        <!-- Mensagem de erro no cadastro-->
-                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">Erro ao enviar menssagem!</div>
-                        </div>
-                        <!-- Botão de cadastro-->
-                        <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton"
-                                type="submit">Quero me cadastrar</button></div>
-                    </form>
+                     <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton"
+                     type="submit">Quero me cadastrar</button></div>
                 </div>
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                    <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                    <div>Caso já tenha o login, basta ir pelo app.</div>
+                    <div>Caso já tenha o login, <br/>
+                    <a class="color-primary" style="font-weight: 700" href="#">acesse sua conta por aqui.</a></div>
                 </div>
             </div>
         </div>
@@ -176,6 +107,6 @@
     
     <%@include file="footer.jsp" %>
 	
-	<%@include file="script.jsp" %>
+	<%@include file="scripts.jsp" %>
 </body>
 </html>
