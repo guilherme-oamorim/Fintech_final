@@ -18,12 +18,12 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="resources/css/sb-admin-2.css" rel="stylesheet">
     <%@include file="styles.jsp" %>
 
 </head>
 
-<body>
+<body style="background-color: #353535;">
     <div class="container">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -32,39 +32,41 @@
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                     <div class="col-lg-7">
-                        <div class="p-5">
+                        <div class="pt-5 px-5 pb-4">
                             <div class="text-center">
-                                <h1 class="h4 text-white mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-white mb-4">Crie uma conta!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user pb-5">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                            placeholder="Primeiro nome">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                            placeholder="Último nome">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                        placeholder="E-mail">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            id="exampleInputPassword" placeholder="Senha">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                            id="exampleRepeatPassword" placeholder="Repita sua senha">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
+                                <a href="login.html" class="text- mt-4 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
+                                  style="font-weight: bold" > Registrar conta
                                 </a>
-                                <hr>
+                                <div class="text-center">
+                            		<a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
+	                        	</div>
                                 <!--<a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
@@ -72,13 +74,12 @@
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                                 </a> -->
                             </form>
-                            <hr>
+                            
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
+                                <a class="small" href="login.html"
+                                style="font-weight: bold">Já tem uma conta? Faça o login por aqui!</a>
                             </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Já tem uma conta? Faça o login por aqui!</a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -86,8 +87,8 @@
         </div>
 
     </div>
-	
 	<%@include file="footer.jsp" %>
+	<%@include file="scripts.jsp" %>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

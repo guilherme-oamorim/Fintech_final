@@ -92,14 +92,14 @@
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center mb-4">
                 <div class="col-lg-6">
-                     <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton"
-                     type="submit">Quero me cadastrar</button></div>
+                     <div class="d-grid">
+                     <a class="btn btn-primary btn-xl" href="register.jsp">Quero me cadastrar</a></div>
                 </div>
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 text-center mb-5 mb-lg-0">
                     <div>Caso já tenha o login, <br/>
-                    <a class="color-primary" style="font-weight: 700" href="#">acesse sua conta por aqui.</a></div>
+                    <a class="color-primary" style="font-weight: 700" href="#">acesse sua conta por aqui</a></div>
                 </div>
             </div>
         </div>
