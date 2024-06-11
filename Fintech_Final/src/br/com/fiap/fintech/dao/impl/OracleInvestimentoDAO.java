@@ -17,6 +17,16 @@ public class OracleInvestimentoDAO implements InvestimentoDAO{
 	
 	private Connection conexao;
 	
+	public OracleInvestimentoDAO() {
+		super();
+	}
+
+	public OracleInvestimentoDAO(Connection conexao) {
+		super();
+		this.conexao = conexao;
+	}
+
+
 	@Override
 	public void cadastrar(Investimento investimento) throws DBException {
 		

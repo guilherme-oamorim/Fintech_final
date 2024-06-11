@@ -70,9 +70,58 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 		PreparedStatement stmt = null;
 		
-		// criar
-	}
+		try {
 		
+			conexao = ConnectionManager.getInstance().getConnection();
+
+			String sql = "UPDATE t_ftc_transacao SET id_categoria = ?, dt_transacao = ?, vl_transacao = ?, ds_transacao = ?) WHERE id_trasacao = ?";
+
+			stmt = conexao.prepareStatement(sql);
+
+			stmt.setInt(1, transacao.getId_categoria());
+			Date data = Date.valueOf(transacao.getDt_transacao());
+			stmt.setDate(2, data);
+			stmt.setFloat(3, transacao.getVl_transacao());
+			stmt.setString(4, transacao.getDs_transacao());
+			stmt.setInt(5, transacao.getId_login());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			throw new DBException("Erro ao atualizar");
+		
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	@Override
+	public void remover(int id_transacao) throws DBException {
+
+		PreparedStatement stmt = null;
+		
+		// criar funcao
+	}
+	
+	
+	@Override
+	public Transacao buscar(int id_transacao) throws DBException {
+
+		PreparedStatement stmt = null;
+		
+		// criar funcao
+		
+	}
+	
 	
 	@Override
 	public List<Transacao> listar() {
