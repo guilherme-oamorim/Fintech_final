@@ -185,7 +185,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 	}
 
 	@Override
-	public List<Transacao> listar(int id_login) {
+	public List<Transacao> listar() {
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -196,9 +196,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ? ORDER BY id_transacao ASC");
-
-			stmt.setInt(1, id_login);
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao ORDER BY id_transacao ASC");
 
 			rs = stmt.executeQuery();
 

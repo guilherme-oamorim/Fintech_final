@@ -10,6 +10,6 @@ public interface InvestimentoDAO {
 	void atualizar(Investimento investimento) throws DBException;
 	void remover(int id_invest) throws DBException;
 	Investimento buscar(int id_invest);
-	List<Investimento> listar(int id_login);
+	List<Investimento> listar();
 	
 }

@@ -195,7 +195,7 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 
 
 	@Override
-	public List<Investimento> listar(int id_login) {
+	public List<Investimento> listar() {
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -206,9 +206,7 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_INVESTIMENTO WHERE id_login = ? ORDER BY id_invest ASC");
-			
-			stmt.setInt(1, id_login);
+			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_INVESTIMENTO ORDER BY id_invest ASC");
 
 			rs = stmt.executeQuery();
 

@@ -10,6 +10,6 @@ public interface TransacaoDAO {
 	void atualizar(Transacao transacao) throws DBException;
 	void remover(int id_transacao) throws DBException;
 	Transacao buscar(int id_transacao);
-	List<Transacao> listar(int id_login);
+	List<Transacao> listar();
 	
 }
