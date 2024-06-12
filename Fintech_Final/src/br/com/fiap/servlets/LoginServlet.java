@@ -23,7 +23,6 @@ import br.com.fiap.fintech.exception.DBException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	private OracleLoginDAO dao = new OracleLoginDAO();
     /**
      * Default constructor. 
@@ -44,6 +43,23 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String acao = request.getParameter("acao");
+		
+		switch (acao) {
+		case "cadastrar":
+			cadastrar(request, response);
+			break;
+		case "editar":
+			//editar(request,response);
+			break;
+		case "excluir":
+			//excluir(request, response);
+			break;
+		}
+}
+
+	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try{
 			String primeiroNome = request.getParameter("Primeiro-Nome");
 			String segundoNome = request.getParameter("Ultimo-Nome");
@@ -64,15 +80,6 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 }
-
-
-
-
-
-
-
-
-
 
 
 
