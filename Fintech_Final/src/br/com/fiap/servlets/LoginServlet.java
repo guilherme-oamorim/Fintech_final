@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try{
-			String primeiroNome = request.getParameter("Primeiro-Nome");
+			String primeiroNome = request.getParameter("Nome");
 			String segundoNome = request.getParameter("Sobrenome");
 			String nome = primeiroNome + " " + segundoNome;
 			String email = request.getParameter("Email");
