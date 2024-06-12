@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Cadastro</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -47,19 +47,16 @@
                             <input type="hidden" value="cadastrar" name="acao">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="PrimeiroNome" class="form-control form-control-user" id="PrimeiroNome"
+                                        <input type="text" name="Nome" class="form-control form-control-user" id="Nome"
                                             placeholder="Primeiro nome">
                                     </div>
-                                    <c:if>
-                                    	<div>O primeiro nome é obrigatório.</div>
+                                    <c:if test="${not empty nameError}">
+                                    	<div class="text-danger">${nameError}</div>
                                     </c:if>
                                     <div class="col-sm-6">
                                         <input type="text" name="Sobrenome" class="form-control form-control-user" id="Sobrenome"
                                             placeholder="Sobrenome">
                                     </div>
-                                    <c:if >
-                                    	<div>O último sobrenome é obrigatório.</div>
-                                    </c:if>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" name="Email" class="form-control form-control-user" id="Email"
@@ -71,13 +68,12 @@
                                             id="Senha" placeholder="Senha">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repita sua senha">
+                                        <input type="password" name="RepetirSenha" class="form-control form-control-user"
+                                            id="RepetirSenha" placeholder="Repita sua senha">
                                     </div>
                                 </div>
-                                <a href="login.html" class="text- mt-4 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
-                                  style="font-weight: bold" > Registrar conta
-                                </a>
+                                <input type="submit" value="Registrar conta" class="text- mt-4 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
+                                  style="font-weight: bold">
                                 <div class="text-center">
                             		<a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
 	                        	</div>

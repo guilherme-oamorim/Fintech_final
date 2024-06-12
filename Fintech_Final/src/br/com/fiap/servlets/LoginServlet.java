@@ -23,7 +23,6 @@ import br.com.fiap.fintech.exception.DBException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	private OracleLoginDAO dao = new OracleLoginDAO();
     /**
      * Default constructor. 
@@ -44,10 +43,37 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String primeiroNome = request.getParameter("PrimeiroNome");
+        boolean hasError = false;
+
+        if (primeiroNome == null || primeiroNome.length() <= 3) {
+            hasError = true;
+            request.setAttribute("nameError", "Insira um primeiro nome válido.");
+        }
+		
+		String acao = request.getParameter("acao");
+		
+		switch (acao) {
+		case "cadastrar":
+			cadastrar(request, response);
+			break;
+		case "editar":
+			//editar(request,response);
+			break;
+		case "excluir":
+			//excluir(request, response);
+			break;
+		}
+}
+
+	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try{
-			String nome = request.getParameter("nome");
-			String email = request.getParameter("email");
-			String senha = request.getParameter("senha");
+			String primeiroNome = request.getParameter("Primeiro-Nome");
+			String segundoNome = request.getParameter("Sobrenome");
+			String nome = primeiroNome + " " + segundoNome;
+			String email = request.getParameter("Email");
+			String senha = request.getParameter("Senha");
 			double saldo = 0;
 			LocalDate dt_criacao = LocalDate.now();
 			
@@ -62,15 +88,6 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 }
-
-
-
-
-
-
-
-
-
 
 
 
