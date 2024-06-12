@@ -45,10 +45,12 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
-			String nome = request.getParameter("nome");
-			String email = request.getParameter("email");
-			String senha = request.getParameter("senha");
-			double saldo = Double.parseDouble(request.getParameter("saldo"));
+			String primeiroNome = request.getParameter("Primeiro-Nome");
+			String segundoNome = request.getParameter("Ultimo-Nome");
+			String nome = primeiroNome + " " + segundoNome;
+			String email = request.getParameter("Email");
+			String senha = request.getParameter("Senha");
+			double saldo = 0;
 			LocalDate dt_criacao = LocalDate.now();
 			
 			Login login = new Login(0, nome, email, senha, saldo, dt_criacao); 
