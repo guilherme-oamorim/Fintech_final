@@ -48,11 +48,11 @@ public class LoginServlet extends HttpServlet {
 			String nome = request.getParameter("nome");
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
-			double saldo = Double.parseDouble(request.getParameter("saldo"));
+			double saldo = 0;
 			LocalDate dt_criacao = LocalDate.now();
 			
 			Login login = new Login(0, nome, email, senha, saldo, dt_criacao); 
-			dao.Cadastrar(login);
+			dao.cadastrar(login);
 			
 			request.setAttribute("msg", "Usuário cadastrado!");
 		}catch(Exception e){

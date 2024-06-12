@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <head>
 
@@ -36,25 +37,38 @@
                             <div class="text-center">
                                 <h1 class="h4 text-white mb-4">Crie uma conta!</h1>
                             </div>
-                            <form class="user pb-5">
+                            <c:if test="${not empty msg }">
+								<div class="alert alert-success">${msg}</div>
+							</c:if>
+							<c:if test="${not empty erro }">
+								<div class="alert alert-danger">${erro}</div>
+							</c:if>
+                            <form class="user pb-5" action="login" method="post">
+                            <input type="hidden" value="cadastrar" name="acao">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        <input type="text" name="PrimeiroNome" class="form-control form-control-user" id="PrimeiroNome"
                                             placeholder="Primeiro nome">
                                     </div>
+                                    <c:if>
+                                    	<div>O primeiro nome é obrigatório.</div>
+                                    </c:if>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Último nome">
+                                        <input type="text" name="Sobrenome" class="form-control form-control-user" id="Sobrenome"
+                                            placeholder="Sobrenome">
                                     </div>
+                                    <c:if >
+                                    	<div>O último sobrenome é obrigatório.</div>
+                                    </c:if>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" name="Email" class="form-control form-control-user" id="Email"
                                         placeholder="E-mail">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Senha">
+                                        <input type="password" name="Senha" class="form-control form-control-user"
+                                            id="Senha" placeholder="Senha">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
@@ -67,12 +81,6 @@
                                 <div class="text-center">
                             		<a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
 	                        	</div>
-                                <!--<a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a> -->
                             </form>
                             
                             <div class="text-center">
