@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try{
 			String primeiroNome = request.getParameter("Primeiro-Nome");
-			String segundoNome = request.getParameter("Ultimo-Nome");
+			String segundoNome = request.getParameter("Sobrenome");
 			String nome = primeiroNome + " " + segundoNome;
 			String email = request.getParameter("Email");
 			String senha = request.getParameter("Senha");
