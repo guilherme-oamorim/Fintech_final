@@ -6,8 +6,8 @@ public class Investimento {
 
 	private int id_invest;
 	private int id_login;
-	private String nm_invest;
 	private float vl_invest;
+	private String nm_invest;
 	private LocalDate dt_invest;
 	private String ds_invest;
 	private LocalDate dt_conclusao;

@@ -35,13 +35,13 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			String sql = "INSERT INTO t_ftc_investimento (id_invest, id_login, nm_invest, vl_invest, dt_invest, ds_invest, dt_conclusao)"
+			String sql = "INSERT INTO t_ftc_investimento (id_invest, id_login, vl_invest, nm_invest, dt_invest, ds_invest, dt_conclusao)"
 					+ "VALUES (SQ_INVEST.NEXTVAL,?,?,?,?,?,?)";
 
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, investimento.getId_login());
-			stmt.setString(2, investimento.getNm_invest());
-			stmt.setFloat(3, investimento.getVl_invest());
+			stmt.setFloat(2, investimento.getVl_invest());
+			stmt.setString(3, investimento.getNm_invest());
 			Date data = Date.valueOf(investimento.getDt_invest());
 			stmt.setDate(4, data);
 			stmt.setString(5, investimento.getDs_invest());
@@ -75,13 +75,13 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			String sql = "UPDATE t_ftc_investimento SET nm_invest = ?, vl_invest = ?, dt_invest = ?, ds_invest = ?, dt_conclusao = ? "
+			String sql = "UPDATE t_ftc_investimento SET , vl_invest = ?, nm_invest = ?, dt_invest = ?, ds_invest = ?, dt_conclusao = ? "
 					+ "WHERE id_invest = ?";
 
 			stmt = conexao.prepareStatement(sql);
-
-			stmt.setString(1, investimento.getNm_invest());
-			stmt.setFloat(2, investimento.getVl_invest());
+			
+			stmt.setFloat(1, investimento.getVl_invest());
+			stmt.setString(2, investimento.getNm_invest());
 			Date data = Date.valueOf(investimento.getDt_invest());
 			stmt.setDate(3, data);
 			stmt.setString(4, investimento.getDs_invest());
@@ -162,8 +162,8 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 			if (rs.next()) {
 				investimento.setId_invest(rs.getInt("id_invest"));
 				investimento.setId_login(rs.getInt("id_login"));
-				investimento.setNm_invest(rs.getString("nm_invest"));
 				investimento.setVl_invest(rs.getFloat("vl_invest"));
+				investimento.setNm_invest(rs.getString("nm_invest"));
 
 				Date data = rs.getDate("dt_invest");
 				investimento.setDt_invest(data.toLocalDate());
@@ -212,17 +212,17 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 
 			while (rs.next()) {
 				Investimento investimento = new Investimento();
-				investimento.setId_invest(rs.getInt("ID_INVEST"));
-				investimento.setId_login(rs.getInt("ID_LOGIN"));
-				investimento.setNm_invest(rs.getString("NM_INVEST"));
-				investimento.setVl_invest(rs.getFloat("VL_INVEST"));
+				investimento.setId_invest(rs.getInt("id_invest"));
+				investimento.setId_login(rs.getInt("id_login"));
+				investimento.setVl_invest(rs.getFloat("vl_invest"));
+				investimento.setNm_invest(rs.getString("nm_invest"));
 
-				Date data = rs.getDate("DT_INVEST");
+				Date data = rs.getDate("dt_invest");
 				investimento.setDt_invest(data.toLocalDate());
 
-				investimento.setDs_invest(rs.getString("DS_INVEST"));
+				investimento.setDs_invest(rs.getString("ds_invest"));
 
-				Date dataConclusao = rs.getDate("DT_CONCLUSAO");
+				Date dataConclusao = rs.getDate("dt_conclusao");
 				investimento.setDt_conclusao(dataConclusao.toLocalDate());
 
 				lista.add(investimento);
