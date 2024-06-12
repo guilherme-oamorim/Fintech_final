@@ -63,7 +63,9 @@ public class OracleLoginDAO implements LoginDAO {
 			}
 		}
 	}
-
+}
+	
+	/*
 	@Override
 	public void atualizar(Login login) throws DBException {
 
@@ -103,7 +105,8 @@ public class OracleLoginDAO implements LoginDAO {
 			}
 		}
 	}
-
+	
+*/
 	
 	
 	

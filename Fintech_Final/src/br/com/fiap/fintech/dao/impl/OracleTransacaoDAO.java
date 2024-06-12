@@ -74,7 +74,8 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 		
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			String sql = "UPDATE t_ftc_transacao SET id_categoria = ?, dt_transacao = ?, vl_transacao = ?, ds_transacao = ?) WHERE id_trasacao = ?";
+			String sql = "UPDATE t_ftc_transacao SET id_categoria = ?, dt_transacao = ?, vl_transacao = ?, ds_transacao = ?"
+					+ "WHERE id_trasacao = ?";
 
 			stmt = conexao.prepareStatement(sql);
 
@@ -83,7 +84,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			stmt.setDate(2, data);
 			stmt.setFloat(3, transacao.getVl_transacao());
 			stmt.setString(4, transacao.getDs_transacao());
-			stmt.setInt(5, transacao.getId_login());
+			stmt.setInt(5, transacao.getId_transacao());
 
 			stmt.executeUpdate();
 
@@ -103,13 +104,37 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 		}
 	}
 	
-	
 	@Override
 	public void remover(int id_transacao) throws DBException {
 
 		PreparedStatement stmt = null;
 		
-		// criar funcao
+		try {
+			
+			conexao = ConnectionManager.getInstance().getConnection();
+
+			String sql = "DELETE FROM t_ftc_transacao WHERE id_trasacao = ?";
+
+			stmt = conexao.prepareStatement(sql);
+
+			stmt.setInt(1, id_transacao);
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			throw new DBException("Erro ao remover");
+		
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	
@@ -117,11 +142,41 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 	public Transacao buscar(int id_transacao) throws DBException {
 
 		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Transacao transacao = null;
+
+		try {
+			
+			conexao = ConnectionManager.getInstance().getConnection();
+			
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ? ORDER BY ID_TRANSACAO ASC");
+			
+			stmt.setInt(1, 1);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Transacao transacao = new Transacao();
+				transacao.setId_transacao(rs.getInt("id_transacao"));
+				transacao.setId_login(rs.getInt("id_login"));
+				transacao.setId_categoria(rs.getInt("id_categoria"));
+				Date data = rs.getDate("dt_transacao");
+				transacao.setDt_transacao(data.toLocalDate());
+				transacao.setVl_transacao(rs.getFloat("vl_transacao"));
+				transacao.setDs_transacao(rs.getString("ds_Transacao"));
+
+				lista.add(transacao);
+			}
+			
+			stmt.close();
+			rs.close();
+			conexao.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
-		// criar funcao
-		
+		return lista;
 	}
-	
 	
 	@Override
 	public List<Transacao> listar() {

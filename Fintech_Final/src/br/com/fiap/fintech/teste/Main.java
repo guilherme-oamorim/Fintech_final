@@ -32,6 +32,6 @@ public class Main {
 		login.setVl_saldo(1000);
 		login.setDt_criacao(LocalDate.now());
 
-		dao.Cadastrar(login);
+		dao.cadastrar(login);
 	}
 }
