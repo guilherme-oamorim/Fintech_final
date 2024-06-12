@@ -35,7 +35,7 @@
                     <div class="col-lg-7">
                         <div class="pt-5 px-5 pb-4">
                             <div class="text-center">
-                                <h1 class="h4 text-white mb-4">Crie uma conta!</h1>
+                                <h1 class="h4 text-white mb-5">Crie uma conta!</h1>
                             </div>
                             <c:if test="${not empty msg }">
 								<div class="alert alert-success">${msg}</div>
@@ -48,37 +48,39 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" name="Nome" class="form-control form-control-user" id="Nome"
-                                            placeholder="Primeiro nome">
+                                            placeholder="Primeiro nome" required>
                                     </div>
-                                    <c:if test="${not empty nameError}">
-                                    	<div class="text-danger">${nameError}</div>
-                                    </c:if>
                                     <div class="col-sm-6">
                                         <input type="text" name="Sobrenome" class="form-control form-control-user" id="Sobrenome"
-                                            placeholder="Sobrenome">
+                                            placeholder="Sobrenome" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" name="Email" class="form-control form-control-user" id="Email"
-                                        placeholder="E-mail">
+                                        placeholder="E-mail" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" name="Senha" class="form-control form-control-user"
-                                            id="Senha" placeholder="Senha">
+                                            id="Senha" placeholder="Senha" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" name="RepetirSenha" class="form-control form-control-user"
-                                            id="RepetirSenha" placeholder="Repita sua senha">
+                                            id="RepetirSenha" placeholder="Repita sua senha" required>
+                                            <c:if test="${not empty erroSenha }">
+                                            <div class="mt-1 small text-danger text-center">${erroSenha}</div>
+                                    		</c:if>
                                     </div>
+                                    
                                 </div>
-                                <input type="submit" value="Registrar conta" class="text- mt-4 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
+                                
+                                <input type="submit" id="submit" value="Registrar conta" class="text- mt-3 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
                                   style="font-weight: bold">
+                                  
                                 <div class="text-center">
                             		<a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
 	                        	</div>
                             </form>
-                            
                             <div class="text-center">
                                 <a class="small" href="login.html"
                                 style="font-weight: bold">Já tem uma conta? Faça o login por aqui!</a>

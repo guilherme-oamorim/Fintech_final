@@ -43,13 +43,6 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String primeiroNome = request.getParameter("PrimeiroNome");
-        boolean hasError = false;
-
-        if (primeiroNome == null || primeiroNome.length() <= 3) {
-            hasError = true;
-            request.setAttribute("nameError", "Insira um primeiro nome válido.");
-        }
 		
 		String acao = request.getParameter("acao");
 		
@@ -69,23 +62,29 @@ public class LoginServlet extends HttpServlet {
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try{
-			String primeiroNome = request.getParameter("Primeiro-Nome");
+			String primeiroNome = request.getParameter("Nome");
 			String segundoNome = request.getParameter("Sobrenome");
 			String nome = primeiroNome + " " + segundoNome;
 			String email = request.getParameter("Email");
 			String senha = request.getParameter("Senha");
+			String repetirSenha = request.getParameter("RepetirSenha");
 			double saldo = 0;
 			LocalDate dt_criacao = LocalDate.now();
 			
-			Login login = new Login(0, nome, email, senha, saldo, dt_criacao); 
-			dao.cadastrar(login);
-			
+			if (senha == null || repetirSenha == null || !senha.equals(repetirSenha)) {
+	            request.setAttribute("erroSenha", "As senhas não coincidem!");
+	            request.getRequestDispatcher("/register.jsp").forward(request, response);
+	        } else {
+	        	Login login = new Login(0, nome, email, senha, saldo, dt_criacao); 
+				dao.cadastrar(login);
+	        }
+
 			request.setAttribute("msg", "Usuário cadastrado!");
 		}catch(Exception e){
 			e.printStackTrace();
 			request.setAttribute("erro","Por favor, valide os dados");
 		}
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 }
 
