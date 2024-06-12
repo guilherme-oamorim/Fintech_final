@@ -84,7 +84,7 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("erro","Por favor, valide os dados");
 		}
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		request.getRequestDispatcher("register.jsp").forward(request, response);
 	}
 }
 
