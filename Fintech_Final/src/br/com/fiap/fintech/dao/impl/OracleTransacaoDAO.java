@@ -64,6 +64,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 		}
 	}
 
+	
 	@Override
 	public void atualizar(Transacao transacao) throws DBException {
 
@@ -234,5 +235,3 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 	}
 
 }
-
-// testes

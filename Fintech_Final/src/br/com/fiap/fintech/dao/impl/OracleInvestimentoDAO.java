@@ -97,6 +97,7 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 			throw new DBException("Erro ao atualizar");
 
 		} finally {
+			
 			try {
 				stmt.close();
 				conexao.close();
@@ -107,7 +108,38 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 		}
 	}
 	
-	
+	@Override
+	public void remover(int id_invest) throws DBException {
+
+		PreparedStatement stmt = null;
+
+		try {
+
+			conexao = ConnectionManager.getInstance().getConnection();
+
+			String sql = "DELETE FROM t_ftc_investimento WHERE id_investimento = ?";
+
+			stmt = conexao.prepareStatement(sql);
+
+			stmt.setInt(1, id_invest);
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+			throw new DBException("Erro ao remover");
+
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	@Override
 	public Investimento buscar(int id_invest) {
@@ -121,26 +153,25 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_INVESTIMENTO ORDER BY ID_INVEST ASC");
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_investimento WHERE id_invest = ?");
+			
+			stmt.setInt(1, id_invest);
 
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				Investimento investimento = new Investimento();
-				investimento.setId_invest(rs.getInt("ID_INVEST"));
-				investimento.setId_login(rs.getInt("ID_LOGIN"));
-				investimento.setNm_invest(rs.getString("NM_INVEST"));
-				investimento.setVl_invest(rs.getFloat("VL_INVEST"));
+				investimento.setId_invest(rs.getInt("id_invest"));
+				investimento.setId_login(rs.getInt("id_login"));
+				investimento.setNm_invest(rs.getString("nm_invest"));
+				investimento.setVl_invest(rs.getFloat("vl_invest"));
 
-				Date data = rs.getDate("DT_INVEST");
+				Date data = rs.getDate("dt_invest");
 				investimento.setDt_invest(data.toLocalDate());
 
-				investimento.setDs_invest(rs.getString("DS_INVEST"));
+				investimento.setDs_invest(rs.getString("ds_invest"));
 
-				Date dataConclusao = rs.getDate("DT_CONCLUSAO");
+				Date dataConclusao = rs.getDate("dt_conclusao");
 				investimento.setDt_conclusao(dataConclusao.toLocalDate());
-
-				lista.add(investimento);
 			}
 
 		} catch (SQLException e) {
@@ -159,7 +190,7 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 			}
 		}
 
-		return lista;
+		return investimento;
 	}
 
 
@@ -175,7 +206,9 @@ public class OracleInvestimentoDAO implements InvestimentoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_INVESTIMENTO ORDER BY ID_INVEST ASC");
+			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_INVESTIMENTO WHERE id_login = ? ORDER BY id_invest ASC");
+			
+			stmt.setInt(1, id_login);
 
 			rs = stmt.executeQuery();
 
