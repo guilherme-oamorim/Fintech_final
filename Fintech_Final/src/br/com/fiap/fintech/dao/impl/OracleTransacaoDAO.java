@@ -25,7 +25,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 		super();
 		this.conexao = conexao;
 	}
-	
+
 	@Override
 	public void cadastrar(Transacao transacao) throws DBException {
 
@@ -49,32 +49,31 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 			throw new DBException("Erro ao cadastrar");
-		
+
 		} finally {
 			try {
 				stmt.close();
 				conexao.close();
-				
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
-	
+
 	@Override
 	public void atualizar(Transacao transacao) throws DBException {
 
 		PreparedStatement stmt = null;
-		
+
 		try {
-		
+
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			String sql = "UPDATE t_ftc_transacao SET id_categoria = ?, dt_transacao = ?, vl_transacao = ?, ds_transacao = ?"
+			String sql = "UPDATE t_ftc_transacao SET id_categoria = ?, dt_transacao = ?, vl_transacao = ?, ds_transacao = ? "
 					+ "WHERE id_trasacao = ?";
 
 			stmt = conexao.prepareStatement(sql);
@@ -89,28 +88,28 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 			throw new DBException("Erro ao atualizar");
-		
+
 		} finally {
 			try {
 				stmt.close();
 				conexao.close();
-				
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
+
 	@Override
 	public void remover(int id_transacao) throws DBException {
 
 		PreparedStatement stmt = null;
-		
+
 		try {
-			
+
 			conexao = ConnectionManager.getInstance().getConnection();
 
 			String sql = "DELETE FROM t_ftc_transacao WHERE id_trasacao = ?";
@@ -122,40 +121,40 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 			throw new DBException("Erro ao remover");
-		
+
 		} finally {
 			try {
 				stmt.close();
 				conexao.close();
-				
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
-	
+
 	@Override
-	public Transacao buscar(int id_transacao) throws DBException {
+	public Transacao buscar(int id_transacao) {
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Transacao transacao = null;
+
+		Transacao transacao = new Transacao();
 
 		try {
-			
+
 			conexao = ConnectionManager.getInstance().getConnection();
-			
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ? ORDER BY ID_TRANSACAO ASC");
-			
-			stmt.setInt(1, 1);
+
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_transacao = ?");
+
+			stmt.setInt(1, id_transacao);
+
 			rs = stmt.executeQuery();
 
-			while (rs.next()) {
-				Transacao transacao = new Transacao();
+			if (rs.next()) {
 				transacao.setId_transacao(rs.getInt("id_transacao"));
 				transacao.setId_login(rs.getInt("id_login"));
 				transacao.setId_categoria(rs.getInt("id_categoria"));
@@ -163,34 +162,43 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				transacao.setDt_transacao(data.toLocalDate());
 				transacao.setVl_transacao(rs.getFloat("vl_transacao"));
 				transacao.setDs_transacao(rs.getString("ds_Transacao"));
-
-				lista.add(transacao);
 			}
-			
-			stmt.close();
-			rs.close();
-			conexao.close();
 
 		} catch (SQLException e) {
+
 			e.printStackTrace();
+
+		} finally {
+
+			try {
+				stmt.close();
+				rs.close();
+				conexao.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
-		return lista;
+
+		return transacao;
 	}
-	
+
 	@Override
-	public List<Transacao> listar() {
+	public List<Transacao> listar(int id_login) {
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 
 		List<Transacao> lista = new ArrayList<Transacao>();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
 
 		try {
-			
+
 			conexao = ConnectionManager.getInstance().getConnection();
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ? "
-					+ "ORDER BY ID_TRANSACAO ASC");
-			stmt.setInt(1, 1);
+
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ? ORDER BY id_transacao ASC");
+
+			stmt.setInt(1, id_login);
+
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -205,16 +213,26 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 				lista.add(transacao);
 			}
-			
-			stmt.close();
-			rs.close();
-			conexao.close();
 
 		} catch (SQLException e) {
+
 			e.printStackTrace();
+
+		} finally {
+
+			try {
+				stmt.close();
+				rs.close();
+				conexao.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
+
 		return lista;
 	}
 
 }
+
+// testes
