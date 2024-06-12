@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 			LocalDate dt_criacao = LocalDate.now();
 			
 			Login login = new Login(0, nome, email, senha, saldo, dt_criacao); 
-			dao.Cadastrar(login);
+			dao.cadastrar(login);
 			
 			request.setAttribute("msg", "Usuário cadastrado!");
 		}catch(Exception e){
