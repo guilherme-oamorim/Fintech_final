@@ -35,11 +35,11 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			String sql = "INSERT INTO t_ftc_transacao (id_transacao, id_perfil, id_categoria, dt_transacao, vl_transacao, ds_transacao) "
+			String sql = "INSERT INTO t_ftc_transacao (id_transacao, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao) "
 					+ "VALUES (SQ_TRANSACAO.NEXTVAL, ?, ?, ?, ?, ?)";
 
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, transacao.getId_perfil());
+			stmt.setInt(1, transacao.getId_login());
 			stmt.setInt(2, transacao.getId_categoria());
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(3, data);
@@ -70,9 +70,113 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 		PreparedStatement stmt = null;
 		
-		// criar
-	}
+		try {
 		
+			conexao = ConnectionManager.getInstance().getConnection();
+
+			String sql = "UPDATE t_ftc_transacao SET id_categoria = ?, dt_transacao = ?, vl_transacao = ?, ds_transacao = ?"
+					+ "WHERE id_trasacao = ?";
+
+			stmt = conexao.prepareStatement(sql);
+
+			stmt.setInt(1, transacao.getId_categoria());
+			Date data = Date.valueOf(transacao.getDt_transacao());
+			stmt.setDate(2, data);
+			stmt.setFloat(3, transacao.getVl_transacao());
+			stmt.setString(4, transacao.getDs_transacao());
+			stmt.setInt(5, transacao.getId_transacao());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			throw new DBException("Erro ao atualizar");
+		
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public void remover(int id_transacao) throws DBException {
+
+		PreparedStatement stmt = null;
+		
+		try {
+			
+			conexao = ConnectionManager.getInstance().getConnection();
+
+			String sql = "DELETE FROM t_ftc_transacao WHERE id_trasacao = ?";
+
+			stmt = conexao.prepareStatement(sql);
+
+			stmt.setInt(1, id_transacao);
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			throw new DBException("Erro ao remover");
+		
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	@Override
+	public Transacao buscar(int id_transacao) throws DBException {
+
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Transacao transacao = null;
+
+		try {
+			
+			conexao = ConnectionManager.getInstance().getConnection();
+			
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ? ORDER BY ID_TRANSACAO ASC");
+			
+			stmt.setInt(1, 1);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Transacao transacao = new Transacao();
+				transacao.setId_transacao(rs.getInt("id_transacao"));
+				transacao.setId_login(rs.getInt("id_login"));
+				transacao.setId_categoria(rs.getInt("id_categoria"));
+				Date data = rs.getDate("dt_transacao");
+				transacao.setDt_transacao(data.toLocalDate());
+				transacao.setVl_transacao(rs.getFloat("vl_transacao"));
+				transacao.setDs_transacao(rs.getString("ds_Transacao"));
+
+				lista.add(transacao);
+			}
+			
+			stmt.close();
+			rs.close();
+			conexao.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return lista;
+	}
 	
 	@Override
 	public List<Transacao> listar() {
@@ -84,7 +188,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 		try {
 			
 			conexao = ConnectionManager.getInstance().getConnection();
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_perfil = ? "
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ? "
 					+ "ORDER BY ID_TRANSACAO ASC");
 			stmt.setInt(1, 1);
 			rs = stmt.executeQuery();
@@ -92,7 +196,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			while (rs.next()) {
 				Transacao transacao = new Transacao();
 				transacao.setId_transacao(rs.getInt("id_transacao"));
-				transacao.setId_perfil(rs.getInt("id_perfil"));
+				transacao.setId_login(rs.getInt("id_login"));
 				transacao.setId_categoria(rs.getInt("id_categoria"));
 				Date data = rs.getDate("dt_transacao");
 				transacao.setDt_transacao(data.toLocalDate());

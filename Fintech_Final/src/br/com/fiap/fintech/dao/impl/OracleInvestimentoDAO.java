@@ -17,6 +17,16 @@ public class OracleInvestimentoDAO implements InvestimentoDAO{
 	
 	private Connection conexao;
 	
+	public OracleInvestimentoDAO() {
+		super();
+	}
+
+	public OracleInvestimentoDAO(Connection conexao) {
+		super();
+		this.conexao = conexao;
+	}
+
+
 	@Override
 	public void cadastrar(Investimento investimento) throws DBException {
 		
@@ -26,11 +36,11 @@ public class OracleInvestimentoDAO implements InvestimentoDAO{
 			
 			conexao = ConnectionManager.getInstance().getConnection();
 			
-			String sql = "INSERT INTO t_ftc_investimento (id_invest, id_perfil, nm_invest, vl_invest, dt_invest, ds_invest, dt_conclusao)"
+			String sql = "INSERT INTO t_ftc_investimento (id_invest, id_login, nm_invest, vl_invest, dt_invest, ds_invest, dt_conclusao)"
 					+ "VALUES (SQ_INVEST.NEXTVAL,?,?,?,?,?,?)";
 			
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, investimento.getId_perfil());
+			stmt.setInt(1, investimento.getId_login());
 			stmt.setString(2, investimento.getNm_invest());
 			stmt.setFloat(3, investimento.getVl_invest());
 			Date data = Date.valueOf(investimento.getDt_invest());
@@ -83,7 +93,7 @@ public class OracleInvestimentoDAO implements InvestimentoDAO{
 			while (rs.next()) {
 				Investimento investimento = new Investimento();
 				investimento.setId_invest(rs.getInt("ID_INVEST"));
-				investimento.setId_perfil(rs.getInt("ID_PERFIL"));
+				investimento.setId_login(rs.getInt("ID_LOGIN"));
 				investimento.setNm_invest(rs.getString("NM_INVEST"));
 				investimento.setVl_invest(rs.getFloat("VL_INVEST"));
 

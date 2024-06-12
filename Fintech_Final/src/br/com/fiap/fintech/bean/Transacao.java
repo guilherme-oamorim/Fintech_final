@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Transacao {
 	
 	private int id_transacao;
-	private int id_perfil;
+	private int id_login;
 	private int id_categoria;
 	private LocalDate dt_transacao;
 	private float vl_transacao;
@@ -14,11 +14,11 @@ public class Transacao {
 	public Transacao() {
 	}
 
-	public Transacao(int id_transacao, int id_perfil, int id_categoria, LocalDate dt_transacao, float vl_transacao,
+	public Transacao(int id_transacao, int id_login, int id_categoria, LocalDate dt_transacao, float vl_transacao,
 			String ds_transacao) {
 		super();
 		this.id_transacao = id_transacao;
-		this.id_perfil = id_perfil;
+		this.id_login = id_login;
 		this.id_categoria = id_categoria;
 		this.dt_transacao = dt_transacao;
 		this.vl_transacao = vl_transacao;
@@ -33,12 +33,12 @@ public class Transacao {
 		this.id_transacao = id_transacao;
 	}
 
-	public int getId_perfil() {
-		return id_perfil;
+	public int getId_login() {
+		return id_login;
 	}
 
-	public void setId_perfil(int id_perfil) {
-		this.id_perfil = id_perfil;
+	public void setId_login(int id_login) {
+		this.id_login = id_login;
 	}
 
 	public int getId_categoria() {
