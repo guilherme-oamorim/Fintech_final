@@ -59,8 +59,8 @@ public class LoginServlet extends HttpServlet {
 
 	private void validar(HttpServletRequest request, HttpServletResponse response) throws DBException, ServletException, IOException {
 		
-		String email = request.getParameter("email");
-		String senha = request.getParameter("senha");
+		String email = request.getParameter("Email");
+		String senha = request.getParameter("Senha");
 		
 		Login login = new Login();
 		login.setDs_email(email);
