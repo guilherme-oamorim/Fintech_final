@@ -23,17 +23,17 @@
 					        ${erro}
 					  	</span>	
 	                    <form class="form-inline my-2 my-lg-0" action="login" method="post">
-	                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-					    	<li class="mx-2">
-					    		<input class="form-control mr-sm-2" type="text" name="email" placeholder="E-mail">
-					      	</li>
-					      	<li class="mx-2">
-					      		<input class="form-control mr-sm-2" type="password" name="senha" placeholder="Senha">
-					      	</li>
-					      	<li class="mx-2">
-					      		<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Entrar</button>
-					    	</li>
-					    </ul>
+		                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+						    	<li class="mx-2">
+						    		<input class="form-control mr-sm-2" type="text" name="Email" placeholder="E-mail">
+						      	</li>
+						      	<li class="mx-2">
+						      		<input class="form-control mr-sm-2" type="password" name="Senha" placeholder="Senha">
+						      	</li>
+						      	<li class="mx-2">
+						      		<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Entrar</button>
+						    	</li>
+						    </ul>
 					    </form>
 					    
 				    </c:if>

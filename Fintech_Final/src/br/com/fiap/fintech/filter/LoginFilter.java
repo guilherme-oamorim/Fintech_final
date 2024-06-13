@@ -32,7 +32,7 @@ public class LoginFilter extends HttpFilter implements Filter {
 				&& !url.contains("home")) {
 			
 			request.setAttribute("erro", "Entre com o usuário e senha!");
-			request.getRequestDispatcher("home.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 		} else {
 			chain.doFilter(request, response);
