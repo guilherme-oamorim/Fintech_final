@@ -43,14 +43,15 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-white mb-4"> Bem vindo!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="login" method="post">
+                                    <input type="hidden" value="validar" name="acao">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="email" name="Email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Endereço de email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="Senha" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Senha">
                                         </div>
                                         <div class="form-group">
@@ -59,9 +60,8 @@
                                                 <label class="custom-control-label" for="customCheck">Lembre de mim</label>
                                             </div>
                                         </div>
-                                        <a href="home.jsp" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                    <input type="submit" id="submit" value="Login" class="text- mt-3 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
+                                  style="font-weight: bold">
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
@@ -69,7 +69,7 @@
                                     <div class="text-center" id="link">
                                         <a class="small" href="register.html">Crie uma conta!</a>
                                     </div>
-
+									</form>
                                 </div>
                             </div>
                         </div>
