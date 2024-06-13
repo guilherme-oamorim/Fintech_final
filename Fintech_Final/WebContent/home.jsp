@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <!DOCTYPE html>
         <html>
 
         <head>
-            <meta charset="ISO-8859-1">
+            <meta charset="UTF-8">
             <title>Home</title>
             <%@include file="styles.jsp" %>
         </head>
@@ -13,31 +13,14 @@
             <%@include file="nav.jsp" %>
 
  <!-- Home -->
-    
-    <!-- Sobre n�s-->
     <section class="masthead page-section bg-primary" id="about">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h2 class="text-white mt-0">Home</h2>
                     <hr class="divider divider-light" />
-                    <p class="text-white-75 mb-4"></div>
-                        <c:if test="${empty user }">
-	    <span class="navbar-text text-danger" style="margin-right:10px" >
-	        ${erro }
-	  	</span>	
-	    <form class="form-inline my-2 my-lg-0" action="login" method="post">
-	    	  <input class="form-control mr-sm-2" type="text" name="email" placeholder="E-mail">
-	      <input class="form-control mr-sm-2" type="password" name="senha" placeholder="Senha">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</button>
-	    </form>
-    </c:if>
-    <c:if test="${not empty user }">
-    		<span class="navbar-text">
-	    		${user }
-	    		<a href="login" class="btn btn-outline-primary my-2 my-sm-0">Sair</a>
-	  	</span>	
-    </c:if>
+                    <p class="text-white-75 mb-2"> Adicione suas transações aqui!<p>
+                </div>
             </div>
         </div>
     </section>
@@ -48,7 +31,7 @@
         <thead>
             <tr>
                 <th scope="col">Data</th>
-                <th scope="col">Descri��o</th>
+                <th scope="col">Descrição</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Valor</th>
             </tr>
@@ -56,7 +39,7 @@
         <tbody>
             <tr>
                 <td>2024-06-10</td>
-                <td>Sal�rio</td>
+                <td>Salário</td>
                 <td>Renda</td>
                 <td>R$ 5000,00</td>
                   <td>
@@ -98,7 +81,7 @@
             </tr>
             <tr>
                 <td>2024-06-10</td>
-                <td>Sal�rio</td>
+                <td>Salário</td>
                 <td>Renda</td>
                 <td>R$ 5000,00</td>
                   <td>
@@ -140,7 +123,7 @@
             </tr>
             <tr>
                 <td>2024-06-10</td>
-                <td>Sal�rio</td>
+                <td>Salário</td>
                 <td>Renda</td>
                 <td>R$ 5000,00</td>
                   <td>
@@ -180,6 +163,17 @@
                    </button>
                </td>
             </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                   <button class="btn btn-primary btn-sm">
+                   	<i class="fas fa-plus"></i> Adicionar	
+                   </button>
+               </td>
+            </tr>	
             <!-- Adicione mais linhas conforme necess�rio -->
         </tbody>
     </table>

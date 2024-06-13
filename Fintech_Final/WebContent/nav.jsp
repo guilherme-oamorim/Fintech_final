@@ -18,10 +18,34 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#about">Sobre nós</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Para você</a></li>
-                    <li class="nav-item"><a class="nav-link" href="register.jsp">Cadastro</a></li>
+                    <c:if test="${empty user}">
+	                    <span class="navbar-text text-danger" style="margin-right:10px" >
+					        ${erro}
+					  	</span>	
+	                    <form class="form-inline my-2 my-lg-0" action="login" method="post">
+	                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+					    	<li class="mx-2">
+					    		<input class="form-control mr-sm-2" type="text" name="email" placeholder="E-mail">
+					      	</li>
+					      	<li class="mx-2">
+					      		<input class="form-control mr-sm-2" type="password" name="senha" placeholder="Senha">
+					      	</li>
+					      	<li class="mx-2">
+					      		<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Entrar</button>
+					    	</li>
+					    </ul>
+					    </form>
+					    
+				    </c:if>
+				    <c:if test="${not empty user }">
+			    		<span class="navbar-text">
+				    		${user}
+				    		<a href="login" class="text-white mx-2 btn btn-outline-danger my-2 my-sm-0">Sair</a>
+				  		</span>	
+				    </c:if>
                 </ul>
             </div>
         </div>
     </nav>
+
+    
