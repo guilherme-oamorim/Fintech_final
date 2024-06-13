@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private LoginDAO dao;
+	private OracleLoginDAO dao;
 
     public LoginServlet() {
     	dao = DAOFactory.getLoginDAO();

@@ -75,7 +75,7 @@ public class OracleLoginDAO implements LoginDAO {
 			
 			conexao = ConnectionManager.getInstance().getConnection();
 			
-			stmt = conexao.prepareStatement("SELECT * FROM TB_USUARIO WHERE DS_EMAIL = ? AND DS_SENHA = ?");
+			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_LOGIN WHERE DS_EMAIL = ? AND DS_SENHA = ?");
 			stmt.setString(1, login.getDs_email());
 			stmt.setString(2, login.getDs_senha());
 			

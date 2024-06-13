@@ -19,7 +19,7 @@ public class DAOFactory {
 		return new OracleInvestimentoDAO();
 	}
 	
-	public static LoginDAO getLoginDAO() {
+	public static OracleLoginDAO getLoginDAO() {
 		return new OracleLoginDAO();
 	}
 	
