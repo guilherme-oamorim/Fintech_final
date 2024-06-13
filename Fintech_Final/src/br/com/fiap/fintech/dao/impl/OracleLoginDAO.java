@@ -65,39 +65,44 @@ public class OracleLoginDAO implements LoginDAO {
 	}
 
 	
-	public boolean validar(String email, String senha) throws DBException {
+	@Override
+	public boolean validar(String email, String senha) {
 
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			conexao = ConnectionManager.getInstance().getConnection();
+			
+			stmt = conexao.prepareStatement("SELECT * FROM TB_USUARIO WHERE DS_EMAIL = ? AND DS_SENHA = ?");
+			stmt.setString(1, email);
+			stmt.setString(2, senha);
+			
+			rs = stmt.executeQuery();
 
-				PreparedStatement stmt = null;
-				ResultSet rs = null;
-				try {
-					conexao = ConnectionManager.getInstance().getConnection();
-					stmt = conexao.prepareStatement("SELECT * FROM TB_USUARIO WHERE DS_EMAIL = ? AND DS_SENHA = ?");
-					stmt.setString(1, email);
-					stmt.setString(2, senha);
-					rs = stmt.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
 
-					if (rs.next()){
-						return true;
-					}
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}finally {
-					try {
-						stmt.close();
-						rs.close();
-						conexao.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-				return false;
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			try {
+				stmt.close();
+				rs.close();
+				conexao.close();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
-	
-	
-	
 	@Override
 	public void atualizar(Login login) throws DBException {
 
@@ -109,9 +114,9 @@ public class OracleLoginDAO implements LoginDAO {
 
 			String sql = "UPDATE t_ftc_login SET nm_login = ?, ds_email = ?, ds_senha = ?, vl_saldo = ?, dt_criacao = ? "
 					+ "WHERE id_login = ?";
-			
+
 			stmt = conexao.prepareStatement(sql);
-			
+
 			stmt.setString(1, login.getNm_login());
 			stmt.setString(2, login.getDs_email());
 			stmt.setString(3, login.getDs_senha());
@@ -128,7 +133,7 @@ public class OracleLoginDAO implements LoginDAO {
 			throw new DBException("Erro ao atualizar");
 
 		} finally {
-				
+
 			try {
 				stmt.close();
 				conexao.close();
@@ -138,59 +143,51 @@ public class OracleLoginDAO implements LoginDAO {
 			}
 		}
 	}
-	
-	/* verificar se vai ser usado
 
-	@Override
-	public void remover(int id_login) throws DBException {
+	/*
+	 * verificar se vai ser usado
+	 * 
+	 * @Override public void remover(int id_login) throws DBException {
+	 * 
+	 * PreparedStatement stmt = null;
+	 * 
+	 * try {
+	 * 
+	 * conexao = ConnectionManager.getInstance().getConnection();
+	 * 
+	 * String sql = "DELETE FROM t_ftc_login WHERE id_login = ?";
+	 * 
+	 * stmt = conexao.prepareStatement(sql);
+	 * 
+	 * stmt.setInt(1, id_login);
+	 * 
+	 * stmt.executeUpdate();
+	 * 
+	 * } catch (SQLException e) {
+	 * 
+	 * e.printStackTrace(); throw new DBException("Erro ao remover");
+	 * 
+	 * } finally { try { stmt.close(); conexao.close();
+	 * 
+	 * } catch (SQLException e) { e.printStackTrace(); } } }
+	 */
 
-		PreparedStatement stmt = null;
-
-		try {
-
-			conexao = ConnectionManager.getInstance().getConnection();
-
-			String sql = "DELETE FROM t_ftc_login WHERE id_login = ?";
-
-			stmt = conexao.prepareStatement(sql);
-
-			stmt.setInt(1, id_login);
-
-			stmt.executeUpdate();
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-			throw new DBException("Erro ao remover");
-
-		} finally {
-			try {
-				stmt.close();
-				conexao.close();
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-*/
-	
 	@Override
 	public Login buscar(int id_login) {
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
+
 		Login login = new Login();
 
 		try {
-			
+
 			conexao = ConnectionManager.getInstance().getConnection();
-			
+
 			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_LOGIN WHERE ID_LOGIN = ?");
-			
+
 			stmt.setInt(1, id_login);
-			
+
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
@@ -202,12 +199,12 @@ public class OracleLoginDAO implements LoginDAO {
 				Date data = rs.getDate("dt_criacao");
 				login.setDt_criacao(data.toLocalDate());
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
-				
+
 			try {
 				stmt.close();
 				conexao.close();
@@ -216,60 +213,47 @@ public class OracleLoginDAO implements LoginDAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return login;
 	}
-	
-	
 
-	/* verificar se vai ser usado
-
-	@Override
-	public List<Login> listar() {
-
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		
-		List<Login> lista = new ArrayList<Login>();
-
-		try {
-			
-			conexao = ConnectionManager.getInstance().getConnection();
-			
-			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_LOGIN ORDER BY ID_LOGIN ASC");
-			
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				Login login = new Login();
-				login.setId_login(rs.getInt("ID_LOGIN"));
-				login.setNm_login(rs.getString("NM_LOGIN"));
-				login.setDs_email(rs.getString("DS_EMAIL"));
-				login.setDs_senha(rs.getString("DS_SENHA"));
-				login.setVl_saldo(rs.getFloat("VL_SALDO"));
-				Date data = rs.getDate("dt_criacao");
-				login.setDt_criacao(data.toLocalDate());
-
-				lista.add(login);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} finally {
-				
-			try {
-				stmt.close();
-				conexao.close();
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return lista;
-	}
-	
-	*/
+	/*
+	 * verificar se vai ser usado
+	 * 
+	 * @Override public List<Login> listar() {
+	 * 
+	 * PreparedStatement stmt = null; ResultSet rs = null;
+	 * 
+	 * List<Login> lista = new ArrayList<Login>();
+	 * 
+	 * try {
+	 * 
+	 * conexao = ConnectionManager.getInstance().getConnection();
+	 * 
+	 * stmt =
+	 * conexao.prepareStatement("SELECT * FROM T_FTC_LOGIN ORDER BY ID_LOGIN ASC");
+	 * 
+	 * rs = stmt.executeQuery();
+	 * 
+	 * while (rs.next()) { Login login = new Login();
+	 * login.setId_login(rs.getInt("ID_LOGIN"));
+	 * login.setNm_login(rs.getString("NM_LOGIN"));
+	 * login.setDs_email(rs.getString("DS_EMAIL"));
+	 * login.setDs_senha(rs.getString("DS_SENHA"));
+	 * login.setVl_saldo(rs.getFloat("VL_SALDO")); Date data =
+	 * rs.getDate("dt_criacao"); login.setDt_criacao(data.toLocalDate());
+	 * 
+	 * lista.add(login); }
+	 * 
+	 * } catch (SQLException e) { e.printStackTrace();
+	 * 
+	 * } finally {
+	 * 
+	 * try { stmt.close(); conexao.close();
+	 * 
+	 * } catch (SQLException e) { e.printStackTrace(); } }
+	 * 
+	 * return lista; }
+	 * 
+	 */
 }
-
