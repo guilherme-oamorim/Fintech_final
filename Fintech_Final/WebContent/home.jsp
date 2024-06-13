@@ -22,6 +22,22 @@
                     <h2 class="text-white mt-0">Home</h2>
                     <hr class="divider divider-light" />
                     <p class="text-white-75 mb-4"></div>
+                        <c:if test="${empty user }">
+	    <span class="navbar-text text-danger" style="margin-right:10px" >
+	        ${erro }
+	  	</span>	
+	    <form class="form-inline my-2 my-lg-0" action="login" method="post">
+	    	  <input class="form-control mr-sm-2" type="text" name="email" placeholder="E-mail">
+	      <input class="form-control mr-sm-2" type="password" name="senha" placeholder="Senha">
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</button>
+	    </form>
+    </c:if>
+    <c:if test="${not empty user }">
+    		<span class="navbar-text">
+	    		${user }
+	    		<a href="login" class="btn btn-outline-primary my-2 my-sm-0">Sair</a>
+	  	</span>	
+    </c:if>
             </div>
         </div>
     </section>
