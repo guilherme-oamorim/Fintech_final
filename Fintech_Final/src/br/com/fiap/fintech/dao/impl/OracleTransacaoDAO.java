@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
+import br.com.fiap.fintech.bean.Categoria;
 import br.com.fiap.fintech.bean.Transacao;
 import br.com.fiap.fintech.dao.TransacaoDAO;
 import br.com.fiap.fintech.singleton.ConnectionManager;
@@ -40,7 +41,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, transacao.getId_login());
-			stmt.setInt(2, transacao.getId_categoria());
+			stmt.setInt(2, transacao.getCategoria().getId_categoria());
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(3, data);
 			stmt.setFloat(4, transacao.getVl_transacao());
@@ -79,7 +80,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			stmt = conexao.prepareStatement(sql);
 
-			stmt.setInt(1, transacao.getId_categoria());
+			stmt.setInt(1, transacao.getCategoria().getId_categoria());
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(2, data);
 			stmt.setFloat(3, transacao.getVl_transacao());
@@ -144,12 +145,15 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 		ResultSet rs = null;
 
 		Transacao transacao = new Transacao();
+		Categoria categoria = new Categoria();
 
 		try {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_transacao = ?");
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao INNER JOIN t_ftc_categoria "
+					+ "t_ftc_transacao.id_categoria = t_ftc_categoria.id_categoria "
+					+ "WHERE t_ftc_transacao.id_transacao = ?");
 
 			stmt.setInt(1, id_transacao);
 
@@ -158,11 +162,18 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			if (rs.next()) {
 				transacao.setId_transacao(rs.getInt("id_transacao"));
 				transacao.setId_login(rs.getInt("id_login"));
-				transacao.setId_categoria(rs.getInt("id_categoria"));
 				Date data = rs.getDate("dt_transacao");
 				transacao.setDt_transacao(data.toLocalDate());
 				transacao.setVl_transacao(rs.getFloat("vl_transacao"));
 				transacao.setDs_transacao(rs.getString("ds_Transacao"));
+				
+				categoria.setId_categoria(rs.getInt("id_categoria"));
+				categoria.setNm_categoria(rs.getString("nm_categoria"));
+				Date dataCategoria = rs.getDate("dt_categoria");
+				categoria.setDt_criacao(dataCategoria.toLocalDate());
+				categoria.setDs_categoria(rs.getString("ds_categoria"));
+				
+				transacao.setCategoria(categoria);
 			}
 
 		} catch (SQLException e) {
@@ -196,7 +207,9 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao ORDER BY id_transacao ASC");
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao INNER JOIN t_ftc_categoria "
+					+ "ON ftc_transacao.id_categoria = t_ftc_categoria.id_categoria "
+					+ "ORDER BY id_transacao ASC");
 
 			rs = stmt.executeQuery();
 
@@ -204,11 +217,19 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				Transacao transacao = new Transacao();
 				transacao.setId_transacao(rs.getInt("id_transacao"));
 				transacao.setId_login(rs.getInt("id_login"));
-				transacao.setId_categoria(rs.getInt("id_categoria"));
 				Date data = rs.getDate("dt_transacao");
 				transacao.setDt_transacao(data.toLocalDate());
 				transacao.setVl_transacao(rs.getFloat("vl_transacao"));
 				transacao.setDs_transacao(rs.getString("ds_Transacao"));
+				
+				Categoria categoria = new Categoria();
+				categoria.setId_categoria(rs.getInt("id_categoria"));
+				categoria.setNm_categoria(rs.getString("nm_categoria"));
+				Date dataCategoria = rs.getDate("dt_categoria");
+				categoria.setDt_criacao(dataCategoria.toLocalDate());
+				categoria.setDs_categoria(rs.getString("ds_categoria"));
+				
+				transacao.setCategoria(categoria);
 
 				lista.add(transacao);
 			}
