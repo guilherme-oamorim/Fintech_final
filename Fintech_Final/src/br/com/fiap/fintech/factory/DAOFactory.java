@@ -11,7 +11,7 @@ import br.com.fiap.fintech.dao.impl.OracleCategoriaDAO;
 
 public class DAOFactory {
 
-	public static TransacaoDAO getTransacaoDAO() {
+	public static OracleTransacaoDAO getTransacaoDAO() {
 		return new OracleTransacaoDAO();
 	}
 	
