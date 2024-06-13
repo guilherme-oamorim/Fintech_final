@@ -82,7 +82,7 @@
 	                        	</div>
                             </form>
                             <div class="text-center">
-                                <a class="small" href="login.html"
+                                <a class="small" href="login.jsp"
                                 style="font-weight: bold">Já tem uma conta? Faça o login por aqui!</a>
                             </div>
 
