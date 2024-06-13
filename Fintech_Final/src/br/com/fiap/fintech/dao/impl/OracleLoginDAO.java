@@ -66,7 +66,7 @@ public class OracleLoginDAO implements LoginDAO {
 
 	
 	@Override
-	public boolean validar(String email, String senha) {
+	public boolean validar(Login login) {
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -76,8 +76,8 @@ public class OracleLoginDAO implements LoginDAO {
 			conexao = ConnectionManager.getInstance().getConnection();
 			
 			stmt = conexao.prepareStatement("SELECT * FROM TB_USUARIO WHERE DS_EMAIL = ? AND DS_SENHA = ?");
-			stmt.setString(1, email);
-			stmt.setString(2, senha);
+			stmt.setString(1, login.getDs_email());
+			stmt.setString(2, login.getDs_senha());
 			
 			rs = stmt.executeQuery();
 

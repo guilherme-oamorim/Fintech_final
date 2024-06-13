@@ -14,34 +14,27 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.fiap.fintech.bean.Login;
+import br.com.fiap.fintech.dao.LoginDAO;
 import br.com.fiap.fintech.dao.impl.OracleLoginDAO;
 import br.com.fiap.fintech.exception.DBException;
+import br.com.fiap.fintech.factory.DAOFactory;
 
-/**
- * Servlet implementation class loginServlet
- */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-	private OracleLoginDAO dao = new OracleLoginDAO();
-    /**
-     * Default constructor. 
-     */
+	
+	private LoginDAO dao;
+
     public LoginServlet() {
-        // TODO Auto-generated constructor stub
+    	dao = DAOFactory.getLoginDAO();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	//teste
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String acao = request.getParameter("acao");
@@ -65,15 +58,21 @@ public class LoginServlet extends HttpServlet {
 }
 
 	private void validar(HttpServletRequest request, HttpServletResponse response) throws DBException, ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		
+		Login login = new Login();
+		login.setDs_email(email);
+		login.setDs_senha(senha);
 		
-		HttpSession session = request.getSession();
-		if (dao.validar(email, senha)) {
+		if (dao.validar(login)) {
+			
+			HttpSession session = request.getSession();
 			session.setAttribute("user", email);
+			
 			String mensagem = "Um login foi realizado";
+			
 		}else {
 			request.setAttribute("erro", "Usuário e/ou senha inválidos");
 		}
