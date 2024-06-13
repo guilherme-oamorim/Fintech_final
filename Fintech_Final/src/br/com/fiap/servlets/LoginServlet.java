@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import br.com.fiap.fintech.bean.Login;
 import br.com.fiap.fintech.dao.impl.OracleLoginDAO;
@@ -50,14 +50,35 @@ public class LoginServlet extends HttpServlet {
 		case "cadastrar":
 			cadastrar(request, response);
 			break;
-		case "editar":
-			//editar(request,response);
+		case "validar":
+			try {
+				validar(request,response);
+			} catch (DBException | ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case "excluir":
 			//excluir(request, response);
 			break;
 		}
 }
+
+	private void validar(HttpServletRequest request, HttpServletResponse response) throws DBException, ServletException, IOException {
+		// TODO Auto-generated method stub
+		String email = request.getParameter("email");
+		String senha = request.getParameter("senha");
+		
+		
+		HttpSession session = request.getSession();
+		if (dao.validar(email, senha)) {
+			session.setAttribute("user", email);
+			String mensagem = "Um login foi realizado";
+		}else {
+			request.setAttribute("erro", "Usuário e/ou senha inválidos");
+		}
+		request.getRequestDispatcher("home.jsp").forward(request, response);
+	}
 
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -70,7 +91,7 @@ public class LoginServlet extends HttpServlet {
 			String repetirSenha = request.getParameter("RepetirSenha");
 			double saldo = 0;
 			LocalDate dt_criacao = LocalDate.now();
-			
+
 			if (senha == null || repetirSenha == null || !senha.equals(repetirSenha)) {
 	            request.setAttribute("erroSenha", "As senhas não coincidem!");
 	            request.getRequestDispatcher("/register.jsp").forward(request, response);
@@ -87,14 +108,3 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("register.jsp").forward(request, response);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

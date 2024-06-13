@@ -65,6 +65,39 @@ public class OracleLoginDAO implements LoginDAO {
 	}
 
 	
+	public boolean validar(String email, String senha) throws DBException {
+
+
+				PreparedStatement stmt = null;
+				ResultSet rs = null;
+				try {
+					conexao = ConnectionManager.getInstance().getConnection();
+					stmt = conexao.prepareStatement("SELECT * FROM TB_USUARIO WHERE DS_EMAIL = ? AND DS_SENHA = ?");
+					stmt.setString(1, email);
+					stmt.setString(2, senha);
+					rs = stmt.executeQuery();
+
+					if (rs.next()){
+						return true;
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						stmt.close();
+						rs.close();
+						conexao.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				return false;
+	}
+
+	
+	
+	
 	@Override
 	public void atualizar(Login login) throws DBException {
 
