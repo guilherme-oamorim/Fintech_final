@@ -1,4 +1,4 @@
-package br.com.fiap.fintech.filter;
+/*package br.com.fiap.fintech.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -32,6 +32,8 @@ public class LoginFilter extends HttpFilter implements Filter {
 				&& !url.contains("home")) {
 			
 			request.setAttribute("erro", "Entre com o usuário e senha!");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("register.jsp").forward(request, response);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 		} else {
@@ -39,4 +41,4 @@ public class LoginFilter extends HttpFilter implements Filter {
 			
 		}
 	}
-}
+}*/

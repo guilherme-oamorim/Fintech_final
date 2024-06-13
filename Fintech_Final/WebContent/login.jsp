@@ -24,7 +24,7 @@
 
 <head>
 
-<body class="" style="background-color: #353535;">
+<body style="background-color: #353535;">
 
     <div class="container">
 
@@ -37,7 +37,7 @@
                     <div class="card-body p-0" style="background-color: #131212;">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-register-image-login"></div>
+                            <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -48,11 +48,11 @@
                                         <div class="form-group">
                                             <input type="email" name="Email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Endereço de email">
+                                                placeholder="Endereço de email" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="Senha" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Senha">
+                                                id="exampleInputPassword" placeholder="Senha" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small" >
