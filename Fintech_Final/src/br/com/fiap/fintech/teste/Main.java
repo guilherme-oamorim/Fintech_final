@@ -16,14 +16,26 @@ import java.time.LocalDate;
 
 public class Main {
 	public static void main(String[] args) {
-		
+		System.out.println("TESTE");
+
 		OracleLoginDAO loginDAO = new OracleLoginDAO();
 		Login login = new Login();
-		Main.inserirLogin(loginDAO, login);
+		login.setDs_email("teste@teste.com");
+		login.setDs_senha("123456");
+		//login.setNm_login("Marco");
+		//login.setVl_saldo(1000);
+		//login.setDt_criacao(LocalDate.now());
 		
-		
+		System.out.println(loginDAO.validar(login));
+		//Main.inserirLogin(loginDAO, login);
+		//Main.validar(loginDAO, login);
 	}
 	
+	
+	public static void validar (OracleLoginDAO dao, Login login) {
+		
+		dao.validar(login);
+	}
 	public static void inserirLogin(OracleLoginDAO dao, Login login) {
 
 		login.setNm_login("Marco");
@@ -32,6 +44,6 @@ public class Main {
 		login.setVl_saldo(1000);
 		login.setDt_criacao(LocalDate.now());
 
-		dao.cadastrar(login);
+		//dao.cadastrar(login);
 	}
 }

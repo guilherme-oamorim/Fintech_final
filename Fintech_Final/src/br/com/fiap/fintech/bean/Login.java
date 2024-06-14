@@ -2,6 +2,8 @@ package br.com.fiap.fintech.bean;
 
 import java.time.LocalDate;
 
+import br.com.fiap.fintech.util.CriptografiaUtils;
+
 public class Login {
 	private int id_login;
 	private String nm_login;
@@ -13,11 +15,12 @@ public class Login {
 	public Login() {
 	}
 
-	public Login(int id_login, String nm_login, String ds_email, String ds_senha, double vl_saldo, LocalDate dt_criacao) {
+	public Login(int id_login, String nm_login, String ds_email, String ds_senha, double vl_saldo,
+			LocalDate dt_criacao) {
 		this.id_login = id_login;
 		this.nm_login = nm_login;
 		this.ds_email = ds_email;
-		this.ds_senha = ds_senha;
+		setDs_senha(ds_senha);
 		this.vl_saldo = vl_saldo;
 		this.dt_criacao = dt_criacao;
 	}
@@ -29,7 +32,7 @@ public class Login {
 	public void setId_login(int id_login) {
 		this.id_login = id_login;
 	}
-	
+
 	public double getVl_saldo() {
 		return vl_saldo;
 	}
@@ -59,7 +62,14 @@ public class Login {
 	}
 
 	public void setDs_senha(String ds_senha) {
-		this.ds_senha = ds_senha;
+		
+		try {
+			this.ds_senha = CriptografiaUtils.criptografar(ds_senha);
+			
+		}	catch (Exception e){
+			e.printStackTrace();
+			
+		}
 	}
 
 	public LocalDate getDt_criacao() {
