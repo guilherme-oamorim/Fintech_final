@@ -60,6 +60,9 @@
                                                 <label class="custom-control-label" for="customCheck">Lembre de mim</label>
                                             </div>
                                         </div>
+                                        <c:if test="${not empty erro}">
+                                        	<span class="text-danger ms-4" style="font-size: 14px"> ${erro} </span>
+                                        </c:if>
                                     <input type="submit" id="submit" value="Login" class="text- mt-3 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
                                   style="font-weight: bold">
                                     <hr>
