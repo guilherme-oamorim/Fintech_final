@@ -36,12 +36,12 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			String sql = "INSERT INTO t_ftc_transacao (id_transacao, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao) "
+			String sql = "INSERT INTO t_ftc_transacao (id_transacao, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao)"
 					+ "VALUES (SQ_TRANSACAO.NEXTVAL, ?, ?, ?, ?, ?)";
 
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, transacao.getId_login());
-			stmt.setInt(2, 3);
+			stmt.setInt(2, transacao.getId_Categoria());
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(3, data);
 			stmt.setFloat(4, transacao.getVl_transacao());
@@ -80,7 +80,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			stmt = conexao.prepareStatement(sql);
 
-			stmt.setInt(1, transacao.getCategoria().getId_categoria());
+			stmt.setInt(1, transacao.getId_Categoria());
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(2, data);
 			stmt.setFloat(3, transacao.getVl_transacao());
@@ -170,7 +170,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				categoria.setId_categoria(rs.getInt("id_categoria"));
 				categoria.setNm_categoria(rs.getString("nm_categoria"));
 				
-				transacao.setCategoria(categoria);
+				//transacao.setCategoria(categoria);
 			}
 
 		} catch (SQLException e) {
@@ -223,7 +223,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				categoria.setId_categoria(rs.getInt("id_categoria"));
 				categoria.setNm_categoria(rs.getString("nm_categoria"));
 				
-				transacao.setCategoria(categoria);
+				//transacao.setCategoria(categoria);
 
 				lista.add(transacao);
 			}

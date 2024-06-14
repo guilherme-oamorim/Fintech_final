@@ -142,8 +142,8 @@ public class TransacaoServlet extends HttpServlet {
 			Categoria categoria = new Categoria();
 			categoria.setId_categoria(id_categoria);
 
-			Transacao transacao = new Transacao(0, id_login, dt_transacao, vl_transacao, ds_transacao);
-			transacao.setCategoria(categoria);
+			Transacao transacao = new Transacao(0, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao);
+			//transacao.setCategoria(categoria);
 
 			dao.cadastrar(transacao);
 
@@ -177,7 +177,7 @@ public class TransacaoServlet extends HttpServlet {
 			//Categoria categoria = new Categoria();
 			//categoria.setId_categoria(3);
 
-			Transacao transacao = new Transacao(0, id_login, dt_transacao, vl_transacao, ds_transacao);
+			Transacao transacao = new Transacao(0, id_login,3, dt_transacao, vl_transacao, ds_transacao);
 			//transacao.setCategoria(categoria);
 
 			dao.cadastrar(transacao);
