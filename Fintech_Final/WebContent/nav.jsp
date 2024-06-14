@@ -18,6 +18,9 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                	<li>
+                		<a href="#">Investimentos</a>
+                	</li>
                     <c:if test="${empty user}">
 	                    <span class="navbar-text text-danger" style="margin-right:10px" >
 					        ${erro}
