@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.fintech.bean.Categoria;
+import br.com.fiap.fintech.bean.Transacao;
 import br.com.fiap.fintech.dao.CategoriaDAO;
 import br.com.fiap.fintech.exception.DBException;
 import br.com.fiap.fintech.singleton.ConnectionManager;

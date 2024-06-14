@@ -37,7 +37,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			conexao = ConnectionManager.getInstance().getConnection();
 
 			String sql = "INSERT INTO t_ftc_transacao (id_transacao, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao)"
-					+ "VALUES (SQ_TRANSACAO.NEXTVAL, ?, ?, ?, ?, ?)";
+					+ "VALUES (SQ_TRANSACAO.NEXTVAL,?,?,?,?,?)";
 
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, transacao.getId_login());
