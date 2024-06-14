@@ -155,7 +155,7 @@
                 <td>Despesas</td>
                 <td>R$ 300,00</td>
                 <td>
-                   <button class="btn btn-secondary btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#Modal${id}" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
                    <button class="btn btn-danger btn-sm">
@@ -169,7 +169,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalAdicionar" class="btn btn-primary btn-sm">
                    	<i class="fas fa-plus"></i> Adicionar	
                    </button>
                </td>
@@ -179,7 +179,7 @@
     </table>
 	
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="ModalAdicionar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
