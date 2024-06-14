@@ -49,20 +49,20 @@ public class TransacaoServlet extends HttpServlet {
 			abrirFormEdicao(request, response);
 			break;
 			
-	/*	case "abrir-form-cadastro":
+		case "abrir-form-cadastro":
 			
 			abrirFormCadastro(request, response);
-			break; */
+			break;
 		}
 	}
 
-/*	private void abrirFormCadastro(HttpServletRequest request, HttpServletResponse response)
+	private void abrirFormCadastro(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		List<Categoria> lista = categoriaDao.listar();
 		request.setAttribute("categorias", lista);
-		request.getRequestDispatcher("transacao.jsp").forward(request, response); // checkar caminho .jsp
-	} */
+		request.getRequestDispatcher("home.jsp").forward(request, response); // checkar caminho .jsp
+	}
 
 	private void carregarOpcoesCategoria(HttpServletRequest request) {
 
@@ -77,7 +77,7 @@ public class TransacaoServlet extends HttpServlet {
 		Transacao transacao = dao.buscar(id_transacao);
 		request.setAttribute("transacao", transacao);
 		carregarOpcoesCategoria(request);
-		request.getRequestDispatcher("transacao.jsp").forward(request, response); // checkar caminho .jsp
+		request.getRequestDispatcher("home.jsp").forward(request, response); // checkar caminho .jsp
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -190,6 +190,6 @@ public class TransacaoServlet extends HttpServlet {
 			request.setAttribute("erro", "Erro ao cadastrar transação");
 		}
 
-		request.getRequestDispatcher("transacao.jsp").forward(request, response);
+		abrirFormCadastro(request, response);
 	}
 }
