@@ -60,27 +60,21 @@ public class TransacaoServlet extends HttpServlet {
 
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		try{
+	    try{
+	        int id_login = Integer.parseInt(request.getParameter("Login"));
+	        int id_categoria = Integer.parseInt(request.getParameter("categoria"));
+	        LocalDate dt_transacao = LocalDate.parse(request.getParameter("dt_Transacao"));
+	        float vl_transacao = Float.parseFloat(request.getParameter("vl_transacao"));
+	        String ds_transacao = request.getParameter("ds_transacao");
 
-			String primeiroNome = request.getParameter("Nome");
-			String segundoNome = request.getParameter("Sobrenome");
-			String nome = primeiroNome + " " + segundoNome;
-			String email = request.getParameter("Email");
-			String senha = request.getParameter("Senha");
-			String ds_transacao = request.getParameter("RepetirSenha");
-			double vl_transacao = 0;
-			LocalDate dt_transacao = LocalDate.now();
-			Transacao transacao = new Transacao(); 
-			dao.cadastrar(transacao);
-	        
+	        Transacao transacao = new Transacao(0, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao);
+	        dao.cadastrar(transacao);
 
-			request.setAttribute("msg", "Usuário cadastrado!");
-		}catch(Exception e){
-			e.printStackTrace();
-			request.setAttribute("erro","Por favor, valide os dados");
-		}
-		request.getRequestDispatcher("register.jsp").forward(request, response);
-		
+	        request.setAttribute("msg", "Transação cadastrada com sucesso!");
+	    }catch(Exception e){
+	        e.printStackTrace();
+	        request.setAttribute("erro","Erro ao cadastrar transação");
+	    }
+	    request.getRequestDispatcher("cadastrarTransacao.jsp").forward(request, response);
 	}
-
 }
