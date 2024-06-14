@@ -9,7 +9,7 @@ public interface LoginDAO {
 	void atualizar(Login login) throws DBException;
 	boolean validar(Login login);
 	// void remover(int id_login) throws DBException;
-	Login buscar(int id_login);
+	Login buscar(String email);
 	// List<Login> listar();
 	
 }

@@ -16,21 +16,31 @@ import java.time.LocalDate;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("TESTE");
+		//System.out.println("TESTE");
 
 		OracleLoginDAO loginDAO = new OracleLoginDAO();
-		Login login = new Login();
-		login.setDs_email("teste@teste.com");
-		login.setDs_senha("123456");
+		//Login login = new Login();
+		//login.setDs_email("teste@teste.com");
+		//login.setDs_senha("123456");
 		//login.setNm_login("Marco");
 		//login.setVl_saldo(1000);
 		//login.setDt_criacao(LocalDate.now());
-		
-		System.out.println(loginDAO.validar(login));
+		String email = "marcopolo@gmail.com";
+		Main.buscar(loginDAO, email);
+		//System.out.println(loginDAO.validar(login));
 		//Main.inserirLogin(loginDAO, login);
 		//Main.validar(loginDAO, login);
 	}
 	
+	public static void buscar (OracleLoginDAO dao, String email) {
+		Login login = dao.buscar(email);
+		System.out.println(login.getId_login());
+		System.out.println(login.getNm_login());
+		System.out.println(login.getDs_email());
+		System.out.println(login.getDs_senha());
+		System.out.println(login.getDt_criacao());
+		System.out.println(login.getVl_saldo());
+	}
 	
 	public static void validar (OracleLoginDAO dao, Login login) {
 		
