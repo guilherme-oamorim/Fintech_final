@@ -26,7 +26,7 @@
     </section>
 
 <div class="container mt-5">
-    <h1 class="mb-4 text-center">Tabela</h1>
+    <h1 class="mb-4 text-center">Transação</h1>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -183,16 +183,48 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Adicionar transação</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		        <h5 class="modal-title" id="exampleModalLabel">Adicionar transação</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
-	      <div class="modal-body">
-	        ...
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
-	        <button type="button" class="btn btn-primary">Salvar</button>
-	      </div>
+	      <form> 
+			    <div class="modal-body my-5 mx-5">
+			       		<div class="form-group row mb-4">
+                             <div class="col-sm-6 mb-3 mb-sm-0">
+                             	<label>Data da transação</label>
+                                <input type="date" name="Data" class="form-control form-control-user" id="Data"
+                                     required>
+                             </div>
+                             <div class="col-sm-6">
+                             	<label>Valor</label>
+                             	<div class="input-group">
+				                    <div class="input-group-prepend">
+				                        <span class="input-group-text">R$</span>
+				                    </div>
+				                    <input type="number" name="Valor" class="form-control" id="Valor"
+				                           step="0.01" min="0" required>
+				                </div>
+                             </div>
+                        </div>
+                        <div class="form-group mb-4">
+                        	<label>Descrição</label>
+                            <textarea name="Descricao" class="form-control form-control-user"
+                                id="Descricao" style="resize: vertical" required></textarea>
+                     	</div>
+                     	<div class="form-group">
+                     		<label>Categoria</label>
+                            <select name="Categoria" class="form-select" id="Categoria" required>
+                                <option value="selecionar" selected disabled>Selecione uma categoria</option>
+			                    <option value="categoria1">Categoria 1</option>
+			                    <option value="categoria2">Categoria 2</option>
+			                    <option value="categoria3">Categoria 3</option>
+                            </select>
+                     	</div>
+			    </div>
+			    <div class="modal-footer">
+				      <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+				      <button type="submit" class="btn btn-primary">Salvar</button>
+			    </div>
+	      </form>
 	    </div>
 	  </div>
 	</div>
