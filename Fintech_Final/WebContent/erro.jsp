@@ -4,9 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Erro 404</title>
+<title>Erro!</title>
+<%@include file="styles.jsp" %>
 </head>
-<body>
-
+<body class="bg-primary">
+ <!-- Home -->
+        <div class="container d-flex flex-column justify-content-center min-vh-100 px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-12 text-center">
+				<h1 class="h4 text-white mb-4 bold">Oops! Parece que ocorreu um erro!</h1>
+            </div>
+            <div class="col-lg-12 text-center">
+				<a href="index.jsp" class="btn btn-primary btn-xl" href=>Página Inical</a>
+            </div>            
+        </div>
+    </div>
+	
+	
+	<%@include file="footer.jsp"%>
+	<%@include file="scripts.jsp" %>
+</body>
 </body>
 </html>

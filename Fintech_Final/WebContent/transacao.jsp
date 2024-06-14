@@ -27,6 +27,12 @@
 	<a href="home.jsp" class="btn btn-primary" style="border-radius: 0px" id="home">Home</a>
 	
 <div class="container mt-5">
+	<c:if test="${not empty msg }">
+		<div class="alert alert-success">${msg}</div>
+	</c:if>
+	<c:if test="${not empty erro }">
+		<div class="alert alert-danger">${erro}</div>
+	</c:if>
     <table class="table table-striped">
         <thead>
             <tr>
