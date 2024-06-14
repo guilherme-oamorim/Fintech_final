@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.invalidate();
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
