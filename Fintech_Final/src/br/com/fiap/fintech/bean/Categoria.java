@@ -1,8 +1,7 @@
 package br.com.fiap.fintech.bean;
 
-import java.time.LocalDate;
-
 public class Categoria {
+	
     private int id_categoria;
     private String nm_categoria;
     
@@ -12,7 +11,6 @@ public class Categoria {
 	public Categoria(int id_categoria, String nm_categoria) {
 		this.id_categoria = id_categoria;
 		this.nm_categoria = nm_categoria;
-
 	}
 	
 	public int getId_categoria() {

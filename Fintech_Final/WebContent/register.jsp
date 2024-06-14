@@ -33,6 +33,7 @@
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block bg-register-imagelogin"></div>
                     <div class="col-lg-7">
+                        <a href="index.jsp" class="btn btn-primary mx-2 my-3"><i class="fa-solid fa-reply"></i></a>
                         <div class="pt-5 px-5 pb-4">
                             <div class="text-center">
                                 <h1 class="h4 text-white mb-5">Crie uma conta!</h1>
@@ -77,9 +78,9 @@
                                 <input type="submit" id="submit" value="Registrar conta" class="text- mt-3 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
                                   style="font-weight: bold">
                                   
-                                <div class="text-center">
+                                <!-- <div class="text-center">
                             		<a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
-	                        	</div>
+	                        	</div> -->
                             </form>
                             <div class="text-center">
                                 <a class="small" href="login.jsp"

@@ -26,19 +26,20 @@
 
 <body style="background-color: #353535;">
 
-    <div class="container">
 
+    <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0" style="background-color: #131212;">
+                    <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
                             <div class="col-lg-6">
+								<a href="index.jsp" class="btn btn-primary mx-2 my-3"><i class="fa-solid fa-reply"></i></a>
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-white mb-4"> Bem vindo!</h1>
@@ -60,14 +61,17 @@
                                                 <label class="custom-control-label" for="customCheck">Lembre de mim</label>
                                             </div>
                                         </div>
+                                        <c:if test="${not empty erro}">
+                                        	<span class="text-danger ms-4" style="font-size: 14px"> ${erro} </span>
+                                        </c:if>
                                     <input type="submit" id="submit" value="Login" class="text- mt-3 mb-2 py-3 btn btn-primary btn-user btn-block text-uppercase"
                                   style="font-weight: bold">
                                     <hr>
-                                    <div class="text-center">
+                                    <!--<div class="text-center">
                                         <a class="small" href="forgot-password.jsp">Esqueceu sua senha?</a>
-                                    </div>
+                                    </div>-->
                                     <div class="text-center" id="link">
-                                        <a class="small" href="register.jsp">Crie uma conta!</a>
+                                        <a class="small" href="register.jsp">Ainda não possui conta? Crie uma!</a>
                                     </div>
 									</form>
                                 </div>
