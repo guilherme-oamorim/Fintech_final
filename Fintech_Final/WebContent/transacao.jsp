@@ -299,7 +299,8 @@
 		        <h5 class="modal-title" id="ModalAdicionar">Adicionar transação</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
-	      <form> 
+	      <form class="user" action="transacao" method="post"> 
+	      <input type="hidden" value="cadastrar" name="acao">
 			    <div class="modal-body my-5 mx-5">
 			       		<div class="form-group row mb-4">
                              <div class="col-sm-6 mb-3 mb-sm-0">
@@ -327,13 +328,13 @@
                      		<label>Categoria</label>
                             <select name="Categoria" class="form-select" id="CategoriaAdicionar" required>
                                 <option value="selecionar" selected disabled>Selecione uma categoria</option>
-			                    <option value="categoria1">Casa</option>
-			                    <option value="categoria2">Alimentação</option>
-			                    <option value="categoria3">Educação</option>
-			                    <option value="categoria4">Transporte</option>
-			                    <option value="categoria5">Filhos</option>
-			                    <option value="categoria6">Saúde</option>
-			                    <option value="categoria7">Lazer</option>
+			                    <option value="Casa">Casa</option>
+			                    <option value="Alimentacao">Alimentação</option>
+			                    <option value="Educacao">Educação</option>
+			                    <option value="Transporte">Transporte</option>
+			                    <option value="Filhos">Filhos</option>
+			                    <option value="Saude">Saúde</option>
+			                    <option value="Lazer">Lazer</option>
                             </select>
                      	</div>
 			    </div>
