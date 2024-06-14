@@ -4,9 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Error</title>
+<title>Error 404</title>
+<%@include file="styles.jsp" %>
 </head>
 <body>
-
+<div class="container">
+	<h1>Erro 404!</h1>
+	<h3>Tente novamente mais tarde.</h3>
+</div>
+	
+	
+	<%@include file="footer.jsp"%>
+	<%@include file="scripts.jsp" %>
 </body>
 </html>
