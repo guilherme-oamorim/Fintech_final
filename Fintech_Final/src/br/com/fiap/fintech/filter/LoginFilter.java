@@ -28,9 +28,8 @@ public class LoginFilter extends HttpFilter implements Filter {
 		HttpSession session = req.getSession();
 		String url = req.getRequestURI();
 
-		if (session.getAttribute("user") == null && !url.contains("resources") && !url.contains("index")
-				&& !url.contains("login") && !url.contains("register")) {
-
+		if (session.getAttribute("user") == null && !url.contains("resources") && !url.contains("index") && !url.contains("login")
+				&& !url.contains("register") && !url.contains("404") && !url.contains("erro") && !url.contains("investimento") && !url.contains("transacao")) {
 			request.setAttribute("erro", "Usuário ou senha inválidos!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 

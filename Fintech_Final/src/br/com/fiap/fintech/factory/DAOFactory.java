@@ -1,10 +1,8 @@
 package br.com.fiap.fintech.factory;
 
-import br.com.fiap.fintech.dao.TransacaoDAO;
 import br.com.fiap.fintech.dao.impl.OracleTransacaoDAO;
 import br.com.fiap.fintech.dao.InvestimentoDAO;
 import br.com.fiap.fintech.dao.impl.OracleInvestimentoDAO;
-import br.com.fiap.fintech.dao.LoginDAO;
 import br.com.fiap.fintech.dao.impl.OracleLoginDAO;
 import br.com.fiap.fintech.dao.CategoriaDAO;
 import br.com.fiap.fintech.dao.impl.OracleCategoriaDAO;
@@ -15,7 +13,7 @@ public class DAOFactory {
 		return new OracleTransacaoDAO();
 	}
 	
-	public static InvestimentoDAO getInvestimentoDAO() {
+	public static OracleInvestimentoDAO getInvestimentoDAO() {
 		return new OracleInvestimentoDAO();
 	}
 	
@@ -23,7 +21,7 @@ public class DAOFactory {
 		return new OracleLoginDAO();
 	}
 	
-	public static CategoriaDAO getCategoriaDAO() {
+	public static OracleCategoriaDAO getCategoriaDAO() {
 		return new OracleCategoriaDAO();
 	}
 	
