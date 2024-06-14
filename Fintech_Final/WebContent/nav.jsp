@@ -9,7 +9,7 @@
 					d="M32.6945 19.16V26.648H19.1585V32.6H29.1425V39.752H19.1585V53H9.7505V19.16H32.6945ZM62.1448 19.16V26.648H53.1208V53H43.7128V26.648H34.7848V19.16H62.1448Z"
 					fill="#FF7A00" />
                 </svg>
-		</a>
+			</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
