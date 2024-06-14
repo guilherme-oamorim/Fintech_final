@@ -13,7 +13,7 @@
             <%@include file="nav.jsp" %>
 
  <!-- Home -->
-    <section class="masthead page-section bg-primary" id="about">
+    <section class="masthead page-section bg-primary" id="about" style="padding-bottom: 1rem">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -46,7 +46,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
@@ -60,7 +60,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
@@ -74,7 +74,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
@@ -88,7 +88,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
@@ -102,7 +102,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
@@ -116,7 +116,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
@@ -130,7 +130,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
@@ -144,7 +144,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
@@ -158,7 +158,7 @@
                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm">
                    	<i class="fas fa-edit"></i> Editar
                    </button>
-                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm">
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm ms-3">
                    	<i class="fas fa-trash-alt"></i> Excluir
                    </button>
                </td>
