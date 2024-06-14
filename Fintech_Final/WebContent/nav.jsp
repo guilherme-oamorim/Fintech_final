@@ -11,11 +11,7 @@
 					d="M32.6945 19.16V26.648H19.1585V32.6H29.1425V39.752H19.1585V53H9.7505V19.16H32.6945ZM62.1448 19.16V26.648H53.1208V53H43.7128V26.648H34.7848V19.16H62.1448Z"
 					fill="#FF7A00" />
                 </svg>
-		</a>
-
-
-
-<<<<<<< HEAD
+		</a> <<<<<<< HEAD
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false"
@@ -28,7 +24,7 @@
 					<span class="navbar-text text-danger" style="margin-right: 10px">
 						${erro} </span>
 					<form class="form-inline my-2 my-lg-0" action="login" method="post">
-					<input type="hidden" value="validar" name="acao">
+						<input type="hidden" value="validar" name="acao">
 						<ul class="navbar-nav ms-auto my-2 my-lg-0">
 							<li class="mx-2"><input class="form-control mr-sm-2"
 								type="email" name="Email" placeholder="E-mail"></li>
@@ -40,53 +36,54 @@
 						</ul>
 					</form>
 =======
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                	<li>
-                		<a href="#">Investimentos</a>
-                	</li>
-                    <c:if test="${empty user}">
-	                    <span class="navbar-text text-danger" style="margin-right:10px" >
-					        ${erro}
-					  	</span>	
-	                    <form class="form-inline my-2 my-lg-0" action="login" method="post">
-		                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-						    	<li class="mx-2">
-						    		<input class="form-control mr-sm-2" type="text" name="Email" placeholder="E-mail">
-						      	</li>
-						      	<li class="mx-2">
-						      		<input class="form-control mr-sm-2" type="password" name="Senha" placeholder="Senha">
-						      	</li>
-						      	<li class="mx-2">
-						      		<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Entrar</button>
-						    	</li>
-						    </ul>
-					    </form>
-					    
-				    </c:if>
-				    <c:if test="${not empty user }">
-			    		<span class="navbar-text">
-				    		${user}
-				    		<a href="login" class="text-white mx-2 btn btn-outline-danger my-2 my-sm-0">Sair</a>
-				  		</span>	
-				    </c:if>
-                </ul>
-            </div>
-        </div>
-    </nav>
->>>>>>> branch 'dev' of https://github.com/guilherme-oamorim/Fintech_final.git
+            <button class="navbar-toggler navbar-toggler-right"
+						type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarResponsive"
+						aria-controls="navbarResponsive" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ms-auto my-2 my-lg-0">
+							<li><a href="#">Investimentos</a></li>
+							<c:if test="${empty user}">
+								<span class="navbar-text text-danger" style="margin-right: 10px">
+									${erro} </span>
+								<form class="form-inline my-2 my-lg-0" action="login"
+									method="post">
+									<ul class="navbar-nav ms-auto my-2 my-lg-0">
+										<li class="mx-2"><input class="form-control mr-sm-2"
+											type="text" name="Email" placeholder="E-mail"></li>
+										<li class="mx-2"><input class="form-control mr-sm-2"
+											type="password" name="Senha" placeholder="Senha"></li>
+										<li class="mx-2">
+											<button class="btn btn-outline-primary my-2 my-sm-0"
+												type="submit">Entrar</button>
+										</li>
+									</ul>
+								</form>
 
-				</c:if>
-				<c:if test="${not empty user }">
-					<span class="navbar-text"> ${user} <a href="login"
-						class="text-white mx-2 btn btn-outline-danger my-2 my-sm-0">Sair</a>
-					</span>
-				</c:if>
-			</ul>
+							</c:if>
+							<c:if test="${not empty user }">
+								<span class="navbar-text"> ${user} <a href="login"
+									class="text-white mx-2 btn btn-outline-danger my-2 my-sm-0">Sair</a>
+								</span>
+							</c:if>
+						</ul>
+					</div>
 		</div>
-	</div>
+</nav>
+>>>>>>> branch 'dev' of
+https://github.com/guilherme-oamorim/Fintech_final.git
+
+</c:if>
+<c:if test="${not empty user }">
+	<span class="navbar-text"> ${user} <a href="login"
+		class="text-white mx-2 btn btn-outline-danger my-2 my-sm-0">Sair</a>
+	</span>
+</c:if>
+</ul>
+</div>
+</div>
 </nav>
 
