@@ -214,6 +214,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				Transacao transacao = new Transacao();
 				transacao.setId_transacao(rs.getInt("id_transacao"));
 				transacao.setId_login(rs.getInt("id_login"));
+				transacao.setId_Categoria(3);
 				Date data = rs.getDate("dt_transacao");
 				transacao.setDt_transacao(data.toLocalDate());
 				transacao.setVl_transacao(rs.getFloat("vl_transacao"));
@@ -223,7 +224,6 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				categoria.setId_categoria(rs.getInt("id_categoria"));
 				categoria.setNm_categoria(rs.getString("nm_categoria"));
 				
-				//transacao.setCategoria(categoria);
 
 				lista.add(transacao);
 			}
