@@ -35,14 +35,11 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 
 			conexao = ConnectionManager.getConnection();
 
-			String sql = "INSERT INTO t_ftc_categoria (id_categoria, nm_categoria, dt_criacao, ds_categoria)"
-					+ "VALUES (SQ_CATEGORIA.NEXTVAL,?,?,?)";
+			String sql = "INSERT INTO t_ftc_categoria (id_categoria, nm_categoria)"
+					+ "VALUES (SQ_CATEGORIA.NEXTVAL,?)";
 
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, categoria.getNm_categoria());
-			Date data = Date.valueOf(categoria.getDt_criacao());
-			stmt.setDate(2, data);
-			stmt.setString(3, categoria.getDs_categoria());
 			
 			stmt.executeUpdate();
 
@@ -74,15 +71,12 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 
 			conexao = ConnectionManager.getConnection();
 
-			String sql = "UPDATE t_ftc_categoria SET nm_categoria = ?, dt_criacao = ?, ds_categoria = ? "
+			String sql = "UPDATE t_ftc_categoria SET nm_categoria = ?"
 					+ "WHERE id_categoria = ?";
 
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, categoria.getNm_categoria());
-			Date data = Date.valueOf(categoria.getDt_criacao());
-			stmt.setDate(2, data);
-			stmt.setString(3, categoria.getDs_categoria());
-			stmt.setInt(4, categoria.getId_categoria());
+			stmt.setInt(2, categoria.getId_categoria());
 
 		} catch (SQLException e) {
 
@@ -158,10 +152,7 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 
 			if (rs.next()) {
 				categoria.setId_categoria(rs.getInt("ID_CATEGORIA"));
-				categoria.setNm_categoria(rs.getString("NM_CATEGORIA"));
-				Date data = rs.getDate("dt_criacao");
-				categoria.setDt_criacao(data.toLocalDate());
-				categoria.setDs_categoria(rs.getString("DS_CATEGORIA"));
+				categoria.setNm_categoria(rs.getString("NM_CATEGORIA"));;
 			}
 
 		} catch (SQLException e) {
@@ -205,9 +196,6 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 				Categoria categoria = new Categoria();
 				categoria.setId_categoria(rs.getInt("ID_CATEGORIA"));
 				categoria.setNm_categoria(rs.getString("NM_CATEGORIA"));
-				Date data = rs.getDate("dt_criacao");
-				categoria.setDt_criacao(data.toLocalDate());
-				categoria.setDs_categoria(rs.getString("DS_CATEGORIA"));
 
 				lista.add(categoria);
 			}
