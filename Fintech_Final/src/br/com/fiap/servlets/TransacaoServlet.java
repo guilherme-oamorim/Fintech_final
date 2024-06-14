@@ -139,8 +139,8 @@ public class TransacaoServlet extends HttpServlet {
 			float vl_transacao = Float.parseFloat(request.getParameter("vl_transacao"));
 			String ds_transacao = request.getParameter("ds_transacao");
 
-			Categoria categoria = new Categoria();
-			categoria.setId_categoria(id_categoria);
+			//Categoria categoria = new Categoria();
+			//categoria.setId_categoria(id_categoria);
 
 			Transacao transacao = new Transacao(0, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao);
 			//transacao.setCategoria(categoria);

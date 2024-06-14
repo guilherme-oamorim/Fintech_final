@@ -10,23 +10,26 @@ import br.com.fiap.fintech.dao.impl.OracleCategoriaDAO;
 import br.com.fiap.fintech.dao.impl.OracleInvestimentoDAO;
 import br.com.fiap.fintech.dao.impl.OracleLoginDAO;
 import br.com.fiap.fintech.dao.impl.OracleTransacaoDAO;
+import br.com.fiap.fintech.exception.DBException;
 
 import java.sql.Date;
 import java.time.LocalDate;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DBException {
 		//System.out.println("TESTE");
-
-		OracleLoginDAO loginDAO = new OracleLoginDAO();
-		//Login login = new Login();
-		//login.setDs_email("teste@teste.com");
-		//login.setDs_senha("123456");
-		//login.setNm_login("Marco");
-		//login.setVl_saldo(1000);
-		//login.setDt_criacao(LocalDate.now());
-		String email = "marcopolo@gmail.com";
-		Main.buscar(loginDAO, email);
+		System.out.println("INICIADO");
+		OracleTransacaoDAO loginDAO = new OracleTransacaoDAO();
+		int id_login = 114;
+		int id_categoria = 3;
+		LocalDate dt_transacao = LocalDate.now();
+		float vl_transacao = 777;
+		String ds_transacao = "teste";
+		Transacao transacao = new Transacao(0, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao);
+		loginDAO.cadastrar(transacao);
+		System.out.println("CADASTRADO");
+		//String email = "marcopolo@gmail.com";
+		//Main.buscar(loginDAO, email);
 		//System.out.println(loginDAO.validar(login));
 		//Main.inserirLogin(loginDAO, login);
 		//Main.validar(loginDAO, login);
