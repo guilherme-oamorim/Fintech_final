@@ -186,7 +186,7 @@
 		        <h5 class="modal-title" id="exampleModalLabel">Adicionar transação</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
-	      <form>
+	      <form> 
 			    <div class="modal-body my-5 mx-5">
 			       		<div class="form-group row mb-4">
                              <div class="col-sm-6 mb-3 mb-sm-0">
