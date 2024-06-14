@@ -72,11 +72,14 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", email);
 
 			String mensagem = "Um login foi realizado";
+			
+			request.getRequestDispatcher("home.jsp").forward(request, response);
 
 		} else {
 			request.setAttribute("erro", "Usuário e/ou senha inválidos");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+		
 	}
 
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
