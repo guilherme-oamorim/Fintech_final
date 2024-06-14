@@ -113,3 +113,4 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("register.jsp").forward(request, response);
 	}
 }
+
