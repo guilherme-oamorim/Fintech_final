@@ -41,7 +41,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, transacao.getId_login());
-			stmt.setInt(2, transacao.getCategoria().getId_categoria());
+			stmt.setInt(2, 3);
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(3, data);
 			stmt.setFloat(4, transacao.getVl_transacao());

@@ -174,11 +174,11 @@ public class TransacaoServlet extends HttpServlet {
 			float vl_transacao = Float.parseFloat(request.getParameter("Valor"));
 			String ds_transacao = request.getParameter("Descricao");
 
-			Categoria categoria = new Categoria();
-			categoria.setId_categoria(3);
+			//Categoria categoria = new Categoria();
+			//categoria.setId_categoria(3);
 
 			Transacao transacao = new Transacao(0, id_login, dt_transacao, vl_transacao, ds_transacao);
-			transacao.setCategoria(categoria);
+			//transacao.setCategoria(categoria);
 
 			dao.cadastrar(transacao);
 

@@ -206,6 +206,7 @@ public class OracleLoginDAO implements LoginDAO {
 		} finally {
 
 			try {
+				rs.close();
 				stmt.close();
 				conexao.close();
 
