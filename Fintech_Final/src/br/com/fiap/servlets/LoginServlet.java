@@ -20,11 +20,12 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private OracleLoginDAO dao;
-
+	
 	public LoginServlet() {
 		dao = DAOFactory.getLoginDAO();
 	}
-
+	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -32,7 +33,8 @@ public class LoginServlet extends HttpServlet {
 		session.invalidate();
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-
+	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -71,8 +73,9 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", email);
 
-			String mensagem = "Um login foi realizado";
+			String msg = "Um login foi realizado";
 			
+			request.setAttribute("mensagem", msg);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 
 		} else {
@@ -82,8 +85,7 @@ public class LoginServlet extends HttpServlet {
 		
 	}
 
-	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
 			
@@ -106,9 +108,11 @@ public class LoginServlet extends HttpServlet {
 			}
 
 			request.setAttribute("msg", "Usuário cadastrado!");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("erro", "Por favor, valide os dados");
+			
 		}
 		request.getRequestDispatcher("register.jsp").forward(request, response);
 	}

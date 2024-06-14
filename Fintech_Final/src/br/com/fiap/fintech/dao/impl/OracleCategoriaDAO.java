@@ -33,7 +33,7 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 
 		try {
 
-			conexao = ConnectionManager.getConnection();
+			conexao = ConnectionManager.getInstance().getConnection();
 
 			String sql = "INSERT INTO t_ftc_categoria (id_categoria, nm_categoria)"
 					+ "VALUES (SQ_CATEGORIA.NEXTVAL,?)";
@@ -69,7 +69,7 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 
 		try {
 
-			conexao = ConnectionManager.getConnection();
+			conexao = ConnectionManager.getInstance().getConnection();
 
 			String sql = "UPDATE t_ftc_categoria SET nm_categoria = ?"
 					+ "WHERE id_categoria = ?";
@@ -103,7 +103,7 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 
 		try {
 
-			conexao = ConnectionManager.getConnection();
+			conexao = ConnectionManager.getInstance().getConnection();
 
 			String sql = "DELETE FROM t_ftc_categoria WHERE id_categoria = ?";
 
@@ -142,7 +142,7 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 
 		try {
 
-			conexao = ConnectionManager.getConnection();
+			conexao = ConnectionManager.getInstance().getConnection();
 
 			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_CATEGORIA WHERE ID_CATEGORIA = ?");
 			
@@ -186,7 +186,7 @@ public class OracleCategoriaDAO implements CategoriaDAO {
 
 		try {
 
-			conexao = ConnectionManager.getConnection();
+			conexao = ConnectionManager.getInstance().getConnection();
 
 			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_CATEGORIA ORDER BY ID_CATEGORIA ASC");
 
