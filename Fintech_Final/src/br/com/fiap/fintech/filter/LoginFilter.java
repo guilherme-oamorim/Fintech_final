@@ -1,4 +1,4 @@
-/*
+
 package br.com.fiap.fintech.filter;
 
 import java.io.IOException;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/home")
+@WebFilter("/*")
 public class LoginFilter extends HttpFilter implements Filter {
 
 	private static final long serialVersionUID = 1L;
@@ -28,10 +28,10 @@ public class LoginFilter extends HttpFilter implements Filter {
 		HttpSession session = req.getSession();
 		String url = req.getRequestURI();
 
-		// verificar nomes parametros session.etc("xxxx")
-		if (session.getAttribute("user") == null && !url.contains("resources") && !url.contains("home")) {
+		if (session.getAttribute("user") == null && !url.contains("resources") && !url.contains("index")
+				&& !url.contains("login") && !url.contains("register")) {
 
-			request.setAttribute("erro", "Entre com o usuário e senha!");
+			request.setAttribute("erro", "Usuário ou senha inválidos!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 
 		} else {
@@ -40,4 +40,3 @@ public class LoginFilter extends HttpFilter implements Filter {
 		}
 	}
 }
-*/
