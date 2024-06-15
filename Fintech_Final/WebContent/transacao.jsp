@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <!DOCTYPE html>
         <html>
 
@@ -43,28 +44,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>2024-06-10</td>
-                <td>Salário</td>
-                <td>Renda</td>
-                <td>R$ 5000,00</td>
-                  <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
+            <c:forEach items="${transacao}" var="t">
+				<tr>
+					<td>
+						<fmt:formatDate value="${t.dt_transacao.time }" pattern="dd/MM/yyyy"/>
+					</td>
+					<td>${t.ds_transacao}</td>
+					<td>${t.id_categoria}</td>
+					<td>${t.vl_transacao}</td>
+					<td>
+	                  	<div class="d-flex justify-content-between">
+		                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
+		                        <i class="fas fa-edit"></i> Editar
+		                    </button>
+		                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
+		                        <i class="fas fa-trash-alt"></i> Excluir
+		                    </button>
+	               		</div>
+	              	</td>
+				</tr>
+			</c:forEach>
             <tr>
                 <td>2024-06-11</td>
                 <td>Aluguel</td>
                 <td>Despesas</td>
                 <td>R$ 1500,00</td>
-                  <td>
+                <td>
                    <div class="d-flex justify-content-between">
 	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
 	                        <i class="fas fa-edit"></i> Editar
@@ -73,7 +78,7 @@
 	                        <i class="fas fa-trash-alt"></i> Excluir
 	                    </button>
                 	</div>
-               </td>
+               	</td>
             </tr>
             <tr>
                 <td>2024-06-12</td>
