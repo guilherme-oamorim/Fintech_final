@@ -81,7 +81,14 @@ public class TransacaoServlet extends HttpServlet {
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Transacao> lista = dao.listar();
+		
+		HttpSession session = request.getSession();
+		String email = session.getAttribute("user").toString();
+		OracleLoginDAO loginDAO = new OracleLoginDAO();
+		Login login = loginDAO.buscar(email);
+		int id_login = login.getId_login();
+		
+		List<Transacao> lista = dao.listar(id_login);
 		request.setAttribute("transacao", lista.toArray());
 		request.getRequestDispatcher("transacao.jsp").forward(request, response); // checkar caminho .jsp
 	}

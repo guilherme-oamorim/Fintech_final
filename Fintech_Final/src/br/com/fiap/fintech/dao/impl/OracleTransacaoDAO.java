@@ -193,7 +193,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 	}
 
 	@Override
-	public List<Transacao> listar() {
+	public List<Transacao> listar(int id_login) {
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -207,7 +207,8 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			//stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao INNER JOIN t_ftc_categoria "
 					//+ "ON ftc_transacao.id_categoria = t_ftc_categoria.id_categoria "
 					//+ "ORDER BY id_transacao ASC");
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao");
+			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ?");
+			stmt.setInt(1, id_login);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
