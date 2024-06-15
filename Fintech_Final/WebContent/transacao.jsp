@@ -46,11 +46,9 @@
         <tbody>
             <c:forEach items="${transacao}" var="t">
 				<tr>
-					<td>
-						<fmt:formatDate value="${t.dt_transacao.time }" pattern="dd/MM/yyyy"/>
-					</td>
+					<td>${t.dt_transacao}</td>
 					<td>${t.ds_transacao}</td>
-					<td>${t.id_categoria}</td>
+					<td>Despesa</td>
 					<td>${t.vl_transacao}</td>
 					<td>
 	                  	<div class="d-flex justify-content-between">

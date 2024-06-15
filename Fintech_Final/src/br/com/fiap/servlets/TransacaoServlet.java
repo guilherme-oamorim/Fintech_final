@@ -82,7 +82,7 @@ public class TransacaoServlet extends HttpServlet {
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Transacao> lista = dao.listar();
-		request.setAttribute("transacao", lista);
+		request.setAttribute("transacao", lista.toArray());
 		request.getRequestDispatcher("transacao.jsp").forward(request, response); // checkar caminho .jsp
 	}
 
