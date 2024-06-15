@@ -10,6 +10,7 @@ public class Transacao {
 	private LocalDate dt_transacao;
 	private float vl_transacao;
 	private String ds_transacao;
+	private String nm_categoria;
 	
 
 	public Transacao() {
@@ -73,5 +74,15 @@ public class Transacao {
 	public void setId_Categoria(int id_categoria) {
 		this.id_categoria = id_categoria;
 	}
+
+	public String getNm_categoria() {
+		return nm_categoria;
+	}
+
+	public void setNm_categoria(String nm_categoria) {
+		this.nm_categoria = nm_categoria;
+	}
 	
+	
+
 }

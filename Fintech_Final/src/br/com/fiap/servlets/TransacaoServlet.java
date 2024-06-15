@@ -37,22 +37,30 @@ public class TransacaoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String acao = request.getParameter("acao");
-
-		switch (acao) {
-		case "listar":
-			
+		
+		if (acao == null) {
 			listar(request, response);
-			break;
-			
-		case "abrir-form-edicao":
-			
-			abrirFormEdicao(request, response);
-			break;
-			
-		case "abrir-form-cadastro":
-			
-			abrirFormCadastro(request, response);
-			break;
+		} else {
+			switch (acao) {
+			case "listar":
+				
+				listar(request, response);
+				break;
+				
+			case "abrir-form-edicao":
+				
+				abrirFormEdicao(request, response);
+				break;
+				
+			case "abrir-form-cadastro":
+				
+				abrirFormCadastro(request, response);
+				break;
+				
+			default:
+				listar(request, response);
+				break;
+			}
 		}
 	}
 
@@ -176,7 +184,7 @@ public class TransacaoServlet extends HttpServlet {
 			Login login = loginDAO.buscar(email);
 			int id_login = login.getId_login();
 			
-			//int id_categoria = Integer.parseInt(request.getParameter("Categoria"));
+			int id_categoria = Integer.parseInt(request.getParameter("Categoria"));
 			LocalDate dt_transacao = LocalDate.parse(request.getParameter("Data"));
 			float vl_transacao = Float.parseFloat(request.getParameter("Valor"));
 			String ds_transacao = request.getParameter("Descricao");
@@ -184,7 +192,7 @@ public class TransacaoServlet extends HttpServlet {
 			//Categoria categoria = new Categoria();
 			//categoria.setId_categoria(3);
 
-			Transacao transacao = new Transacao(0, id_login,3, dt_transacao, vl_transacao, ds_transacao);
+			Transacao transacao = new Transacao(0, id_login,id_categoria, dt_transacao, vl_transacao, ds_transacao);
 			//transacao.setCategoria(categoria);
 
 			dao.cadastrar(transacao);

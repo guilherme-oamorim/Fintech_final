@@ -21,13 +21,8 @@
 	                <p class="text-white-75 mb-2">Adicione suas transações e investimentos!</p>
 	            </div>
 	            <div class="col-lg-12 d-flex justify-content-center mt-4">
-	            	<form method="get" action="transacao">
-		            	<input type="hidden" value="listar" name="acao">     	
-	                	<input type="submit" value="Ir para Transações"class="btn btn-primary mx-2">
-	            	</form>
-	            	<form>
-		                <a href="transacao.jsp" class="btn btn-primary mx-2">Ir para Investimentos</a>
-	            	</form>
+	                <a href="investimento.jsp" class="btn btn-primary mx-2">Ir para Investimentos</a>
+	                <a href="transacao" class="btn btn-primary mx-2">Ir para Transações</a>
 	            </div>
 	        </div>
 	    </div>

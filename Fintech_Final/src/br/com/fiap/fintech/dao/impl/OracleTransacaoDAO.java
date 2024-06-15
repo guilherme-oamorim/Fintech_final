@@ -207,7 +207,10 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			//stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao INNER JOIN t_ftc_categoria "
 					//+ "ON ftc_transacao.id_categoria = t_ftc_categoria.id_categoria "
 					//+ "ORDER BY id_transacao ASC");
-			stmt = conexao.prepareStatement("SELECT * FROM t_ftc_transacao WHERE id_login = ?");
+			stmt = conexao.prepareStatement("SELECT * \r\n"
+					+ "FROM t_ftc_transacao t\r\n"
+					+ "JOIN t_ftc_categoria c ON c.id_categoria = t.id_categoria\r\n"
+					+ "WHERE t.id_login = ?");
 			stmt.setInt(1, id_login);
 			rs = stmt.executeQuery();
 
@@ -215,7 +218,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				Transacao transacao = new Transacao();
 				transacao.setId_transacao(rs.getInt("id_transacao"));
 				transacao.setId_login(rs.getInt("id_login"));
-				transacao.setId_Categoria(rs.getInt("id_categoria"));
+				transacao.setNm_categoria(rs.getString("nm_categoria"));
 				Date data = rs.getDate("dt_transacao");
 				transacao.setDt_transacao(data.toLocalDate());
 				transacao.setVl_transacao(rs.getFloat("vl_transacao"));
