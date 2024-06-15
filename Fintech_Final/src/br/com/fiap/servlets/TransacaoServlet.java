@@ -9,10 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.fiap.fintech.bean.Categoria;
+import br.com.fiap.fintech.bean.Login;
 import br.com.fiap.fintech.bean.Transacao;
 import br.com.fiap.fintech.dao.impl.OracleCategoriaDAO;
+import br.com.fiap.fintech.dao.impl.OracleLoginDAO;
 import br.com.fiap.fintech.dao.impl.OracleTransacaoDAO;
 import br.com.fiap.fintech.factory.DAOFactory;
 
@@ -34,22 +37,30 @@ public class TransacaoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String acao = request.getParameter("acao");
-
-		switch (acao) {
-		case "listar":
-			
+		
+		if (acao == null) {
 			listar(request, response);
-			break;
-			
-		case "abrir-form-edicao":
-			
-			abrirFormEdicao(request, response);
-			break;
-			
-		case "abrir-form-cadastro":
-			
-			abrirFormCadastro(request, response);
-			break;
+		} else {
+			switch (acao) {
+			case "listar":
+				
+				listar(request, response);
+				break;
+				
+			case "abrir-form-edicao":
+				
+				abrirFormEdicao(request, response);
+				break;
+				
+			case "abrir-form-cadastro":
+				
+				abrirFormCadastro(request, response);
+				break;
+				
+			default:
+				listar(request, response);
+				break;
+			}
 		}
 	}
 
@@ -58,7 +69,7 @@ public class TransacaoServlet extends HttpServlet {
 
 		List<Categoria> lista = categoriaDao.listar();
 		request.setAttribute("categorias", lista);
-		request.getRequestDispatcher("home.jsp").forward(request, response); // checkar caminho .jsp
+		request.getRequestDispatcher("transacao.jsp").forward(request, response); // checkar caminho .jsp
 	}
 
 	private void carregarOpcoesCategoria(HttpServletRequest request) {
@@ -74,13 +85,20 @@ public class TransacaoServlet extends HttpServlet {
 		Transacao transacao = dao.buscar(id_transacao);
 		request.setAttribute("transacao", transacao);
 		carregarOpcoesCategoria(request);
-		request.getRequestDispatcher("home.jsp").forward(request, response); // checkar caminho .jsp
+		request.getRequestDispatcher("transacao.jsp").forward(request, response); // checkar caminho .jsp
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Transacao> lista = dao.listar();
-		request.setAttribute("transacao", lista);
-		request.getRequestDispatcher("home.jsp").forward(request, response); // checkar caminho .jsp
+		
+		HttpSession session = request.getSession();
+		String email = session.getAttribute("user").toString();
+		OracleLoginDAO loginDAO = new OracleLoginDAO();
+		Login login = loginDAO.buscar(email);
+		int id_login = login.getId_login();
+		
+		List<Transacao> lista = dao.listar(id_login);
+		request.setAttribute("transacao", lista.toArray());
+		request.getRequestDispatcher("transacao.jsp").forward(request, response); // checkar caminho .jsp
 	}
 
 	@Override
@@ -130,19 +148,25 @@ public class TransacaoServlet extends HttpServlet {
 		
 		try {
 			
-			int id_login = Integer.parseInt(request.getParameter("id_login"));
-			int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
-			LocalDate dt_transacao = LocalDate.parse(request.getParameter("dt_Transacao"));
-			float vl_transacao = Float.parseFloat(request.getParameter("vl_transacao"));
-			String ds_transacao = request.getParameter("ds_transacao");
+			HttpSession session = request.getSession();
+			String email = session.getAttribute("user").toString();
+			OracleLoginDAO loginDAO = new OracleLoginDAO();
+			Login login = loginDAO.buscar(email);
+			int id_login = login.getId_login();
+			
+			int id_transacao = Integer.parseInt(request.getParameter("TransacaoEditar"));
+			int id_categoria = Integer.parseInt(request.getParameter("Categoria"));
+			LocalDate dt_transacao = LocalDate.parse(request.getParameter("Data"));
+			float vl_transacao = Float.parseFloat(request.getParameter("Valor"));
+			String ds_transacao = request.getParameter("Descricao");
 
-			Categoria categoria = new Categoria();
-			categoria.setId_categoria(id_categoria);
+			//Categoria categoria = new Categoria();
+			//categoria.setId_categoria(id_categoria);
 
-			Transacao transacao = new Transacao(0, id_login, dt_transacao, vl_transacao, ds_transacao);
-			transacao.setCategoria(categoria);
+			Transacao transacao = new Transacao(id_transacao, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao);
+			//transacao.setCategoria(categoria);
 
-			dao.cadastrar(transacao);
+			dao.atualizar(transacao);
 
 			request.setAttribute("msg", "Transação atualizada com sucesso!");
 			
@@ -160,17 +184,22 @@ public class TransacaoServlet extends HttpServlet {
 
 		try {
 			
-			int id_login = Integer.parseInt(request.getParameter("id_login"));
-			int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
-			LocalDate dt_transacao = LocalDate.parse(request.getParameter("dt_Transacao"));
-			float vl_transacao = Float.parseFloat(request.getParameter("vl_transacao"));
-			String ds_transacao = request.getParameter("ds_transacao");
+			HttpSession session = request.getSession();
+			String email = session.getAttribute("user").toString();
+			OracleLoginDAO loginDAO = new OracleLoginDAO();
+			Login login = loginDAO.buscar(email);
+			int id_login = login.getId_login();
+			
+			int id_categoria = Integer.parseInt(request.getParameter("Categoria"));
+			LocalDate dt_transacao = LocalDate.parse(request.getParameter("Data"));
+			float vl_transacao = Float.parseFloat(request.getParameter("Valor"));
+			String ds_transacao = request.getParameter("Descricao");
 
-			Categoria categoria = new Categoria();
-			categoria.setId_categoria(id_categoria);
+			//Categoria categoria = new Categoria();
+			//categoria.setId_categoria(3);
 
-			Transacao transacao = new Transacao(0, id_login, dt_transacao, vl_transacao, ds_transacao);
-			transacao.setCategoria(categoria);
+			Transacao transacao = new Transacao(0, id_login,id_categoria, dt_transacao, vl_transacao, ds_transacao);
+			//transacao.setCategoria(categoria);
 
 			dao.cadastrar(transacao);
 
@@ -182,6 +211,6 @@ public class TransacaoServlet extends HttpServlet {
 			request.setAttribute("erro", "Erro ao cadastrar transação");
 		}
 
-		abrirFormCadastro(request, response);
+		listar(request, response);
 	}
 }

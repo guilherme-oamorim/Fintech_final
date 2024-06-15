@@ -68,9 +68,6 @@
                                     <div class="col-sm-6">
                                         <input type="password" name="RepetirSenha" class="form-control form-control-user"
                                             id="RepetirSenha" placeholder="Repita sua senha" required>
-                                            <c:if test="${not empty erroSenha }">
-                                            <div class="mt-1 small text-danger text-center">${erroSenha}</div>
-                                    		</c:if>
                                     </div>
                                     
                                 </div>

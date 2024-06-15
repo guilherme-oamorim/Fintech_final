@@ -20,11 +20,11 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private OracleLoginDAO dao;
-	
+
 	public LoginServlet() {
 		dao = DAOFactory.getLoginDAO();
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		session.invalidate();
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", email);
 
 			String msg = "Um login foi realizado";
-			
+
 			request.setAttribute("mensagem", msg);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 
@@ -82,13 +82,14 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("erro", "Usuário e/ou senha inválidos");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
-		
+
 	}
 
-	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
-			
+
 			String primeiroNome = request.getParameter("Nome");
 			String segundoNome = request.getParameter("Sobrenome");
 			String nome = primeiroNome + " " + segundoNome;
@@ -98,24 +99,27 @@ public class LoginServlet extends HttpServlet {
 			double saldo = 0;
 			LocalDate dt_criacao = LocalDate.now();
 
-			if (senha == null || repetirSenha == null || !senha.equals(repetirSenha)) {
-				request.setAttribute("erroSenha", "As senhas não coincidem!");
+			Login loginExists = dao.buscar(email);
+
+			if (loginExists != null) {
+				request.setAttribute("erro", "E-mail já cadastrado!");
 				request.getRequestDispatcher("register.jsp").forward(request, response);
-				
+			} else if (senha == null || repetirSenha == null || !senha.equals(repetirSenha)) {
+				request.setAttribute("erro", "As senhas não coincidem!");
+				request.getRequestDispatcher("register.jsp").forward(request, response);
+
 			} else {
 				Login login = new Login(0, nome, email, senha, saldo, dt_criacao);
 				dao.cadastrar(login);
 			}
 
 			request.setAttribute("msg", "Usuário cadastrado!");
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("erro", "Por favor, valide os dados");
-			
+
 		}
 		request.getRequestDispatcher("register.jsp").forward(request, response);
 	}
 }
-
-

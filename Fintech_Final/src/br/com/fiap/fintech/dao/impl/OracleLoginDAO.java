@@ -173,24 +173,25 @@ public class OracleLoginDAO implements LoginDAO {
 	 */
 
 	@Override
-	public Login buscar(int id_login) {
+	public Login buscar(String ds_email) {
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-		Login login = new Login();
+		Login login = null;
 
 		try {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_LOGIN WHERE ID_LOGIN = ?");
+			stmt = conexao.prepareStatement("SELECT * FROM T_FTC_LOGIN WHERE DS_EMAIL = ?");
 
-			stmt.setInt(1, id_login);
+			stmt.setString(1, ds_email);
 
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
+				login = new Login();
 				login.setId_login(rs.getInt("ID_LOGIN"));
 				login.setNm_login(rs.getString("NM_LOGIN"));
 				login.setDs_email(rs.getString("DS_EMAIL"));
@@ -206,6 +207,7 @@ public class OracleLoginDAO implements LoginDAO {
 		} finally {
 
 			try {
+				rs.close();
 				stmt.close();
 				conexao.close();
 
