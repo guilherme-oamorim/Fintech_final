@@ -148,19 +148,25 @@ public class TransacaoServlet extends HttpServlet {
 		
 		try {
 			
-			int id_login = Integer.parseInt(request.getParameter("id_login"));
-			int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
-			LocalDate dt_transacao = LocalDate.parse(request.getParameter("dt_Transacao"));
-			float vl_transacao = Float.parseFloat(request.getParameter("vl_transacao"));
-			String ds_transacao = request.getParameter("ds_transacao");
+			HttpSession session = request.getSession();
+			String email = session.getAttribute("user").toString();
+			OracleLoginDAO loginDAO = new OracleLoginDAO();
+			Login login = loginDAO.buscar(email);
+			int id_login = login.getId_login();
+			
+			int id_transacao = Integer.parseInt(request.getParameter("TransacaoEditar"));
+			int id_categoria = Integer.parseInt(request.getParameter("Categoria"));
+			LocalDate dt_transacao = LocalDate.parse(request.getParameter("Data"));
+			float vl_transacao = Float.parseFloat(request.getParameter("Valor"));
+			String ds_transacao = request.getParameter("Descricao");
 
 			//Categoria categoria = new Categoria();
 			//categoria.setId_categoria(id_categoria);
 
-			Transacao transacao = new Transacao(0, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao);
+			Transacao transacao = new Transacao(id_transacao, id_login, id_categoria, dt_transacao, vl_transacao, ds_transacao);
 			//transacao.setCategoria(categoria);
 
-			dao.cadastrar(transacao);
+			dao.atualizar(transacao);
 
 			request.setAttribute("msg", "Transação atualizada com sucesso!");
 			

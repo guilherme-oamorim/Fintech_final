@@ -67,11 +67,11 @@ public class Transacao {
 		this.ds_transacao = ds_transacao;
 	}
 
-	public int getId_Categoria() {
+	public int getId_categoria() {
 		return id_categoria;
 	}
 
-	public void setId_Categoria(int id_categoria) {
+	public void setId_categoria(int id_categoria) {
 		this.id_categoria = id_categoria;
 	}
 

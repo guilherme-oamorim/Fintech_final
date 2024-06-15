@@ -41,7 +41,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, transacao.getId_login());
-			stmt.setInt(2, transacao.getId_Categoria());
+			stmt.setInt(2, transacao.getId_categoria());
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(3, data);
 			stmt.setFloat(4, transacao.getVl_transacao());
@@ -76,11 +76,11 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 			conexao = ConnectionManager.getInstance().getConnection();
 
 			String sql = "UPDATE t_ftc_transacao SET id_categoria = ?, dt_transacao = ?, vl_transacao = ?, ds_transacao = ? "
-					+ "WHERE id_trasacao = ?";
+					+ "WHERE id_transacao = ?";
 
 			stmt = conexao.prepareStatement(sql);
 
-			stmt.setInt(1, transacao.getId_Categoria());
+			stmt.setInt(1, transacao.getId_categoria());
 			Date data = Date.valueOf(transacao.getDt_transacao());
 			stmt.setDate(2, data);
 			stmt.setFloat(3, transacao.getVl_transacao());
@@ -218,6 +218,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				Transacao transacao = new Transacao();
 				transacao.setId_transacao(rs.getInt("id_transacao"));
 				transacao.setId_login(rs.getInt("id_login"));
+				transacao.setId_categoria(rs.getInt("id_categoria"));
 				transacao.setNm_categoria(rs.getString("nm_categoria"));
 				Date data = rs.getDate("dt_transacao");
 				transacao.setDt_transacao(data.toLocalDate());

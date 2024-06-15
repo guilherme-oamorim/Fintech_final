@@ -52,7 +52,7 @@
 					<td>R$ ${t.vl_transacao}</td>
 					<td>
 	                  	<div class="d-flex justify-content-between">
-		                    <button OnClick="Editar('${t.id_transacao}', '${t.dt_transacao}', '${t.ds_transacao}', '${t.nm_categoria}', '${t.vl_transacao}')" type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
+		                    <button OnClick="Editar('${t.id_transacao}', '${t.dt_transacao}', '${t.ds_transacao}', '${t.id_categoria}', '${t.vl_transacao}')" type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
 		                        <i class="fas fa-edit"></i> Editar
 		                    </button>
 		                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
@@ -125,14 +125,15 @@
 		        <h5 class="modal-title" id="ModalEditar">Editar transação</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
-	      <form>
-	      	<!-- <input type="hidden" value="editar" name="acao">-->
+	      <form method="post" action="transacao">
+	      	<input type="hidden" value="editar" name="acao">
+	      	<input type="hidden" name="TransacaoEditar" id="idTransacao">
 			    <div class="modal-body my-5 mx-5">
 			       		<div class="form-group row mb-4">
                              <div class="col-sm-6 mb-3 mb-sm-0">
                              	<label>Data da transação</label>
                                 <input type="date" name="Data" class="form-control form-control-user" id="DataEditar"
-                                     value="2024-06-15" required>
+                                      required>
                              </div>
                              <div class="col-sm-6">
                              	<label>Valor</label>
@@ -141,32 +142,32 @@
 				                        <span class="input-group-text">R$</span>
 				                    </div>
 				                    <input type="number" name="Valor" class="form-control" id="ValorEditar"
-				                           step="0.01" min="0" value="1333" required>
+				                           step="0.01" min="0" required>
 				                </div>
                              </div>
                         </div>
                         <div class="form-group mb-4">
                         	<label>Descrição</label>
                             <textarea name="Descricao" class="form-control form-control-user"
-                                id="DescricaoEditar" style="resize: vertical" required>Aluguel</textarea>
+                                id="DescricaoEditar" style="resize: vertical" required></textarea>
                      	</div>
                      	<div class="form-group">
                      		<label>Categoria</label>
                             <select name="Categoria" class="form-select" id="CategoriaEditar" required>
                                 <option value="selecionar" disabled>Selecione uma categoria</option>
-			                    <option value="Casa">Casa</option>
-			                    <option value="Alimentacao">Alimentação</option>
-			                    <option value="Educacao">Educação</option>
-			                    <option value="Transporte">Transporte</option>
-			                    <option value="Filhos">Filhos</option>
-			                    <option value="Saúde">Saúde</option>
-			                    <option value="Lazer">Lazer</option>
+			                    <option value="1">Casa</option>
+			                    <option value="2">Alimentação</option>
+			                    <option value="3">Educação</option>
+			                    <option value="4">Transporte</option>
+			                    <option value="5">Filhos</option>
+			                    <option value="6">Saúde</option>
+			                    <option value="7">Lazer</option>
                             </select>
                      	</div>
 			    </div>
 			    <div class="modal-footer">
 				      <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
-				      <button type="submit" class="btn btn-primary">Salvar</button>
+				      <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i>Salvar</button>
 			    </div>
 	      </form>
 	    </div>
@@ -237,9 +238,12 @@
 	<%@include file="scripts.jsp" %>
 	
 	<script>
-		function Editar(id_transacao, dt_transacao, ds_transacao, nm_categoria, vl_transacao){
-			console.log(id_transacao, dt_transacao, ds_transacao, nm_categoria, vl_transacao);
+		function Editar(id_transacao, dt_transacao, ds_transacao, id_categoria, vl_transacao){
+			console.log(id_transacao, dt_transacao, ds_transacao, id_categoria, vl_transacao);
 			
+			var idTransacao = document.getElementById("idTransacao");
+			idTransacao.value = id_transacao;
+		
 			var DataEditar = document.getElementById("DataEditar");
 			DataEditar.value = dt_transacao;
 			
@@ -250,7 +254,7 @@
 			DescricaoEditar.value = ds_transacao;
 			
 			var CategoriaEditar = document.getElementById("CategoriaEditar");
-			CategoriaEditar.value = nm_categoria;
+			CategoriaEditar.value = id_categoria;
 			
 		}
 		
