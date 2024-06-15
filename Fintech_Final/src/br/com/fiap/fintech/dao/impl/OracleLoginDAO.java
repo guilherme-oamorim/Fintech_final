@@ -178,7 +178,7 @@ public class OracleLoginDAO implements LoginDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-		Login login = new Login();
+		Login login = null;
 
 		try {
 
@@ -191,6 +191,7 @@ public class OracleLoginDAO implements LoginDAO {
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
+				login = new Login();
 				login.setId_login(rs.getInt("ID_LOGIN"));
 				login.setNm_login(rs.getString("NM_LOGIN"));
 				login.setDs_email(rs.getString("DS_EMAIL"));
@@ -206,6 +207,7 @@ public class OracleLoginDAO implements LoginDAO {
 		} finally {
 
 			try {
+				rs.close();
 				stmt.close();
 				conexao.close();
 

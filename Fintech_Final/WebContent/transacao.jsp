@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <!DOCTYPE html>
         <html>
 
@@ -27,6 +28,12 @@
 	<a href="home.jsp" class="btn btn-primary" style="border-radius: 0px" id="home">Home</a>
 	
 <div class="container mt-5">
+	<c:if test="${not empty msg }">
+		<div class="alert alert-success">${msg}</div>
+	</c:if>
+	<c:if test="${not empty erro }">
+		<div class="alert alert-danger">${erro}</div>
+	</c:if>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -37,150 +44,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>2024-06-10</td>
-                <td>Salário</td>
-                <td>Renda</td>
-                <td>R$ 5000,00</td>
-                  <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
-            <tr>
-                <td>2024-06-11</td>
-                <td>Aluguel</td>
-                <td>Despesas</td>
-                <td>R$ 1500,00</td>
-                  <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
-            <tr>
-                <td>2024-06-12</td>
-                <td>Compra de supermercado</td>
-                <td>Despesas</td>
-                <td>R$ 300,00</td>
-                <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
-            <tr>
-                <td>2024-06-10</td>
-                <td>Salário</td>
-                <td>Renda</td>
-                <td>R$ 5000,00</td>
-                  <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
-            <tr>
-                <td>2024-06-11</td>
-                <td>Aluguel</td>
-                <td>Despesas</td>
-                <td>R$ 1500,00</td>
-                  <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
-            <tr>
-                <td>2024-06-12</td>
-                <td>Compra de supermercado</td>
-                <td>Despesas</td>
-                <td>R$ 300,00</td>
-                <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
-            <tr>
-                <td>2024-06-10</td>
-                <td>Salário</td>
-                <td>Renda</td>
-                <td>R$ 5000,00</td>
-                  <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
-            <tr>
-                <td>2024-06-11</td>
-                <td>Aluguel</td>
-                <td>Despesas</td>
-                <td>R$ 1500,00</td>
-                  <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
-            <tr>
-                <td>2024-06-12</td>
-                <td>Compra de supermercado</td>
-                <td>Despesas</td>
-                <td>R$ 300,00</td>
-                <td>
-                   <div class="d-flex justify-content-between">
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-edit"></i> Editar
-	                    </button>
-	                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
-	                        <i class="fas fa-trash-alt"></i> Excluir
-	                    </button>
-                	</div>
-               </td>
-            </tr>
+            <c:forEach items="${transacao}" var="t">
+				<tr>
+					<td>${t.dt_transacao}</td>
+					<td>${t.ds_transacao}</td>
+					<td>${t.nm_categoria}</td>
+					<td>R$ ${t.vl_transacao}</td>
+					<td>
+	                  	<div class="d-flex justify-content-between">
+		                    <button OnClick="Editar('${t.id_transacao}', '${t.dt_transacao}', '${t.ds_transacao}', '${t.id_categoria}', '${t.vl_transacao}')" type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
+		                        <i class="fas fa-edit"></i> Editar
+		                    </button>
+		                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
+		                        <i class="fas fa-trash-alt"></i> Excluir
+		                    </button>
+	               		</div>
+	              	</td>
+				</tr>
+			</c:forEach>
             <tr>
                 <td></td>
                 <td></td>
@@ -244,13 +125,15 @@
 		        <h5 class="modal-title" id="ModalEditar">Editar transação</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
-	      <form> 
+	      <form method="post" action="transacao">
+	      	<input type="hidden" value="editar" name="acao">
+	      	<input type="hidden" name="TransacaoEditar" id="idTransacao">
 			    <div class="modal-body my-5 mx-5">
 			       		<div class="form-group row mb-4">
                              <div class="col-sm-6 mb-3 mb-sm-0">
                              	<label>Data da transação</label>
                                 <input type="date" name="Data" class="form-control form-control-user" id="DataEditar"
-                                     value="2024-06-15" required>
+                                      required>
                              </div>
                              <div class="col-sm-6">
                              	<label>Valor</label>
@@ -259,32 +142,32 @@
 				                        <span class="input-group-text">R$</span>
 				                    </div>
 				                    <input type="number" name="Valor" class="form-control" id="ValorEditar"
-				                           step="0.01" min="0" value="1333" required>
+				                           step="0.01" min="0" required>
 				                </div>
                              </div>
                         </div>
                         <div class="form-group mb-4">
                         	<label>Descrição</label>
                             <textarea name="Descricao" class="form-control form-control-user"
-                                id="DescricaoEditar" style="resize: vertical" required>Aluguel</textarea>
+                                id="DescricaoEditar" style="resize: vertical" required></textarea>
                      	</div>
                      	<div class="form-group">
                      		<label>Categoria</label>
                             <select name="Categoria" class="form-select" id="CategoriaEditar" required>
                                 <option value="selecionar" disabled>Selecione uma categoria</option>
-			                    <option value="categoria1">Casa</option>
-			                    <option value="categoria2">Alimentação</option>
-			                    <option value="categoria3">Educação</option>
-			                    <option value="categoria4">Transporte</option>
-			                    <option value="categoria5">Filhos</option>
-			                    <option value="categoria6">Saúde</option>
-			                    <option value="categoria7">Lazer</option>
+			                    <option value="1">Casa</option>
+			                    <option value="2">Alimentação</option>
+			                    <option value="3">Educação</option>
+			                    <option value="4">Transporte</option>
+			                    <option value="5">Filhos</option>
+			                    <option value="6">Saúde</option>
+			                    <option value="7">Lazer</option>
                             </select>
                      	</div>
 			    </div>
 			    <div class="modal-footer">
 				      <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
-				      <button type="submit" class="btn btn-primary">Salvar</button>
+				      <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i>Salvar</button>
 			    </div>
 	      </form>
 	    </div>
@@ -300,7 +183,7 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <form class="user" action="transacao" method="post"> 
-	      <input type="hidden" value="cadastrar" name="acao">
+	      	<input type="hidden" value="cadastrar" name="acao">
 			    <div class="modal-body my-5 mx-5">
 			       		<div class="form-group row mb-4">
                              <div class="col-sm-6 mb-3 mb-sm-0">
@@ -328,13 +211,13 @@
                      		<label>Categoria</label>
                             <select name="Categoria" class="form-select" id="CategoriaAdicionar" required>
                                 <option value="selecionar" selected disabled>Selecione uma categoria</option>
-			                    <option value="Casa">Casa</option>
-			                    <option value="Alimentacao">Alimentação</option>
-			                    <option value="Educacao">Educação</option>
-			                    <option value="Transporte">Transporte</option>
-			                    <option value="Filhos">Filhos</option>
-			                    <option value="Saude">Saúde</option>
-			                    <option value="Lazer">Lazer</option>
+			                    <option value="1">Casa</option>
+			                    <option value="2">Alimentação</option>
+			                    <option value="3">Educação</option>
+			                    <option value="4">Transporte</option>
+			                    <option value="5">Filhos</option>
+			                    <option value="6">Saúde</option>
+			                    <option value="7">Lazer</option>
                             </select>
                      	</div>
 			    </div>
@@ -355,6 +238,26 @@
 	<%@include file="scripts.jsp" %>
 	
 	<script>
+		function Editar(id_transacao, dt_transacao, ds_transacao, id_categoria, vl_transacao){
+			console.log(id_transacao, dt_transacao, ds_transacao, id_categoria, vl_transacao);
+			
+			var idTransacao = document.getElementById("idTransacao");
+			idTransacao.value = id_transacao;
+		
+			var DataEditar = document.getElementById("DataEditar");
+			DataEditar.value = dt_transacao;
+			
+			var ValorEditar = document.getElementById("ValorEditar");
+			ValorEditar.value = vl_transacao;
+			
+			var DescricaoEditar = document.getElementById("DescricaoEditar");
+			DescricaoEditar.value = ds_transacao;
+			
+			var CategoriaEditar = document.getElementById("CategoriaEditar");
+			CategoriaEditar.value = id_categoria;
+			
+		}
+		
         document.addEventListener("DOMContentLoaded", function() {
             var selectedValue = "categoria4"; // Altere este valor conforme necessário
             var selectElement = document.getElementById("CategoriaEditar");

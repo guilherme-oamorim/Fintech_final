@@ -22,7 +22,7 @@
 	            </div>
 	            <div class="col-lg-12 d-flex justify-content-center mt-4">
 	                <a href="investimento.jsp" class="btn btn-primary mx-2">Ir para Investimentos</a>
-	                <a href="transacao.jsp" class="btn btn-primary mx-2">Ir para Transações</a>
+	                <a href="transacao" class="btn btn-primary mx-2">Ir para Transações</a>
 	            </div>
 	        </div>
 	    </div>
