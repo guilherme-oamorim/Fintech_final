@@ -214,11 +214,11 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 				Transacao transacao = new Transacao();
 				transacao.setId_transacao(rs.getInt("id_transacao"));
 				transacao.setId_login(rs.getInt("id_login"));
-				transacao.setId_Categoria(3);
+				transacao.setId_Categoria(rs.getInt("id_categoria"));
 				Date data = rs.getDate("dt_transacao");
 				transacao.setDt_transacao(data.toLocalDate());
 				transacao.setVl_transacao(rs.getFloat("vl_transacao"));
-				transacao.setDs_transacao(rs.getString("ds_Transacao"));
+				transacao.setDs_transacao(rs.getString("ds_transacao"));
 				
 				//Categoria categoria = new Categoria();
 				//categoria.setId_categoria(rs.getInt("id_categoria"));
