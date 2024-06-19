@@ -114,7 +114,7 @@ public class OracleTransacaoDAO implements TransacaoDAO {
 
 			conexao = ConnectionManager.getInstance().getConnection();
 
-			String sql = "DELETE FROM t_ftc_transacao WHERE id_trasacao = ?";
+			String sql = "DELETE FROM t_ftc_transacao WHERE id_transacao = ?";
 
 			stmt = conexao.prepareStatement(sql);
 

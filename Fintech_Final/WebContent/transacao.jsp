@@ -54,8 +54,8 @@
 	                  	<div class="d-flex justify-content-between">
 		                    <button OnClick="Editar('${t.id_transacao}', '${t.dt_transacao}', '${t.ds_transacao}', '${t.id_categoria}', '${t.vl_transacao}')" type="button" data-bs-toggle="modal" data-bs-target="#ModalEditar" class="btn btn-secondary btn-sm flex-fill me-3 ms-3">
 		                        <i class="fas fa-edit"></i> Editar
-		                    </button>
-		                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
+		                    </button>		                     
+		                    <button OnClick="Excluir('${t.id_transacao}', '${t.dt_transacao}', '${t.ds_transacao}', '${t.id_categoria}', '${t.vl_transacao}') "type="button" data-bs-toggle="modal" data-bs-target="#ModalExcluir" class="btn btn-danger btn-sm flex-fill me-3 ms-3">
 		                        <i class="fas fa-trash-alt"></i> Excluir
 		                    </button>
 	               		</div>
@@ -83,36 +83,46 @@
 	<div class="modal fade " id="ModalExcluir" tabindex="-1" aria-labelledby="ModalExcluir" aria-hidden="true">
 	  <div class="modal-dialog modal-sm">
 	    <div class="modal-content">
+	      	
 	      	<div class="modal-header">
 		        <h5 class="modal-title" id="ModalExcluir">Excluir transação?</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      	</div>
+	      	
 	      	<div class="modal-body">
 	      		<div class="container mt-2">
 			        <table class="table">
-			            <tr>
+			            <!-- 
+			            <tr>	            
 			                <th>Data</th>
-			                <td>2024/02/20</td>
+			                <td></td>
 			            </tr>
 			            <tr>
 			                <th>Descrição</th>
-			                <td>Aluguel</td>
+			                <td></td>
 			            </tr>
 			            <tr>
 			                <th>Categoria</th>
-			                <td>Casa</td>
+			                <td></td>
 			            </tr>
 			            <tr>
 			                <th>Valor</th>
-			                <td>R$ 1333,00</td>
+			                <td>R$ </td>
 			            </tr>
+			             -->
 			        </table>
 			    </div>
 	      	</div>
+	      	
 		    <div class="modal-footer">
-			      <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
-			      <button type="submit" class="btn btn-danger">Excluir</button>
+		    	<form method="post" action="transacao">
+			      	<input type="hidden" value="excluir" name="acao">
+			      	<input type="hidden" name="TransacaoExcluir" id="idTransacao">
+					<button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-danger">Excluir</button>
+				</form>
 		    </div>
+		    
 	    </div>
 	  </div>
 	</div>
@@ -238,6 +248,15 @@
 	<%@include file="scripts.jsp" %>
 	
 	<script>
+	
+		function Excluir(id_transacao, dt_transacao, ds_transacao, id_categoria, vl_transacao){
+			console.log(id_transacao, dt_transacao, ds_transacao, id_categoria, vl_transacao);
+			
+			var idTransacao = document.getElementById("idTransacao");
+			idTransacao.value = id_transacao;
+			
+		}
+	
 		function Editar(id_transacao, dt_transacao, ds_transacao, id_categoria, vl_transacao){
 			console.log(id_transacao, dt_transacao, ds_transacao, id_categoria, vl_transacao);
 			
